@@ -1,0 +1,121 @@
+open mysql 
+	
+	database create 
+	
+	create database expensemanager; 
+	
+	use expensemanager; 
+	
+	create table users (
+		userId integer primary key auto_increment,
+		firstName varchar(30),
+		lastName varchar(30),
+		email varchar(50),
+		mobileno varchar(10),
+		gender varchar(5),
+		dateofbirth varchar(50),
+		designation varchar(60),
+		role integer,
+		otp varchar(10),
+		createdAt varchar(30),
+		imageurl varchar(1024),
+		password varchar(80)
+	);
+	
+	create table accounttype (
+		accountTypeId integer primary key auto_increment,
+		accountTypeName varchar(20),
+		deleted boolean );
+		
+	
+	
+	
+	
+	1 -> admin 
+	2 -> user/buyer 
+	
+	desc users;
+	
+	
+insert into users (firstName,lastName,email,password,role) 
+	values ('ram','sita','ram@sita.com','ravan');
+	
+	
+alter table users add otp varchar(10); 
+
+
+update user set otp = ? where email = ? 
+
+
+-----------------------------------------
+
+create table expense(
+	expenseId integer primary key auto_increment,
+	title varchar(30),
+	categoryId integer references category(categoryId),
+	subCategoryId integer references subcategory(subCategoryId),
+	vendorId integer references vendor(vendorId),
+	accountTypeId integer references accounttype(accountTypeId),
+	statusId integer references status(statusId),
+	userId integer references users(userId),
+	amount varchar(20),
+	date varchar(10),
+	description varchar(500),
+	imageurl varchar(1024)
+	);
+	
+	create table income(
+	incomeId integer primary key auto_increment,
+	title varchar(30),
+	accountTypeId integer references accounttype(accountTypeId),
+	statusId integer references status(statusId),
+	userId integer references users(userId),
+	amount varchar(20),
+	date varchar(10),
+	description varchar(500)
+	);
+	
+	
+	
+	deleted boolean  
+);
+
+	create table subcategory(
+		subCategoryId integer primary key auto_increment,
+		subCategoryName varchar(30),
+		categoryId integer references category(categoryId)
+	);
+
+alter table subcategory add deleted boolean; 
+
+-----------------------------------------
+
+create table vendor(
+vendorId integer primary key auto_increment,
+vendorName varchar(20),
+ deleted boolean
+);
+
+
+create table status(
+statusId integer primary key auto_increment,
+statusName varchar(20),
+ deleted boolean
+);
+
+category 
+	categoryId 
+
+subcategory 
+	categoryId s
+
+
+select categoryName,subcategoryname from category,subcategory; 
+
+
+select category.categoryName , category.categoryId , 
+subcategory.subcategoryId, subcategory.subcategoryname,
+subcategory.deleted 
+from category,subcategory
+where category.categoryId = subcategory.categoryId
+; 
