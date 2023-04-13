@@ -96,6 +96,7 @@ public class SessionController {
 			
 			//session
 			session.setAttribute("userId", userBean.getUserid());
+			session.setAttribute("user",userBean);
 			
 			//max inactive interval time
 			session.setMaxInactiveInterval(60*5);

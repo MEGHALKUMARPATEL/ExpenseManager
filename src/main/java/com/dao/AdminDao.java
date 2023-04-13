@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bean.ExpenseChartBean;
+import com.bean.ProfileBean;
 import com.bean.ExpenseChartBean;
 import com.bean.UserBean;
 
@@ -162,6 +163,14 @@ public List<ExpenseChartBean> getExpenseStats() {
 		return stmt.query(selectQ, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class), new Object[] {year});
 
 	}
+
+public void updateImageUrl(ProfileBean profileBean) {
+	stmt.update("update users set imageUrl = ? where userId = ?",profileBean.getImageUrl(),profileBean.getUserId());
+	System.out.println("Image Set");
+}
+
+
+
 }
 	
 	

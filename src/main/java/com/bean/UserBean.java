@@ -14,8 +14,15 @@ public class UserBean {
 	private int role;
 	private String otp;
 	private String createdAt;
+	private String imageUrl;
 	public int getUserid() {
 		return userid;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	public void setUserid(int userid) {
 		this.userid = userid;
