@@ -118,6 +118,7 @@
 												
 											</tr>
 										</thead>
+										<tbody>
 									  <% for(StatusBean sb:list){ %>
 	<tr>
 		<td><%=sb.getStatusId() %></td>

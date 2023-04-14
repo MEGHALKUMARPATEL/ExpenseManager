@@ -62,7 +62,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Tables / Expense Manager | ListSubCategory</title>
+<title>Tables | Expense Manager | ListSubCategory</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 <meta content="" name="description">
 <meta content="" name="keywords">
@@ -79,7 +79,7 @@
 		<h1>Category</h1>
 		<nav>
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
+				<li class="breadcrumb-item"><a href="../admindashboard">Home</a></li>
 				<li class="breadcrumb-item">SubCategory</li>
 				<li class="breadcrumb-item active">List</li>
 			</ol>
@@ -112,24 +112,25 @@
 											<th>Action</th>
 										</tr>
 									</thead>
-									<tbody>
-										<%
-											for (SubCategoryBean cb : list) {
-										%>
-										<tr>
-											<td><%=cb.getSubCategoryId()%></td>
-											<td><%=cb.getSubCategoryName()%></td>
-											<td><%=cb.isDeleted()%></td>
-											<td><a href="deletesubcategory/<%=cb.getSubCategoryId()%>">Delete</a>
-												| <a href="viewsubcategory/<%=cb.getSubCategoryId()%>">View</a></td>
-										</tr>
-
-										<%
-											}
-										%>
-									</tbody>
+								<tbody>
+									<%
+										for (SubCategoryBean sb : list) {
+									%>
+									<tr>
+										<td><%=sb.getSubCategoryName()%></td>
+										<td><%=sb.getCategoryName()%>
+										<td>
+										<a href="deletesubcategory/<%=sb.getSubCategoryId()%>"><i class="bi bi-trash text-danger"></i> </a>
+										<a href="editsubcategory?subCategoryId=<%=sb.getSubCategoryId() %>"><i class="bi bi-pencil text-primary"></i></a>  
+										
+										</td>
+									</tr>
+									<%
+										}
+									%>
+								</tbody>
 								</table>
-								<a href="subcategories"><i class="bi bi-plus-circle-fill fs-2" style="size: 250px"></i>Add New Sub Category</a>
+								<a href="subcategory"><i class="bi bi-plus-circle-fill fs-2" style="size: 250px"></i>Add New Sub Category</a>
 							</div>
 						 
 

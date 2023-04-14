@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.CategoryBean;
 import com.bean.SubCategoryBean;
@@ -63,4 +64,21 @@ public class SubCategoryController {
 		return "ViewSubCategory";
 	
 }
+	
+
+	@GetMapping("/editsubcategory")
+	public String editSubCategory(@RequestParam("subCategoryId") Integer subCategoryId,Model model) {
+
+		SubCategoryBean subCategory = subCategoryDao.getSubCategoryById(subCategoryId);
+		model.addAttribute("subCategory",subCategory);
+		model.addAttribute("list", categoryDao.getAllCategory());
+		return "EditSubCategory";
+	}
+
+	@PostMapping("/updatesubcategory")
+	public String updateSubCategory(SubCategoryBean subCategory) {
+		subCategoryDao.updateSubCategory(subCategory);
+		
+		return "redirect:/listsubcategory";
+	}
 }

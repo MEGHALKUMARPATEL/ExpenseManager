@@ -76,22 +76,36 @@
                   
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate action="updatecategory" method="post">
+                 
+						<form action="updatecategory" method="post">
+							<input type="hidden" name="categoryId" value="${categoryBean.categoryId}"/>
+							<div class="row mb-3">
+								<label for="inputText" class="col-sm-2 col-form-label">Category
+									Name</label>
+								<div class="col-sm-6">
+									<input type="text" name="categoryName" value="${categoryBean.categoryName}" class="form-control">
+								</div>
+							</div>
 
-                    <div class="col-12">
-                      <label for="yourPassword" class="form-label">Category</label>
-                      <input type="hidden" name="categoryId" value="${categoryBean.categoryId }" class="form-control" id="yourPassword" required>
-                      <input type="text" name="categoryName" class="form-control" id="yourPassword" value="${categoryBean.categoryName }" required>
-                      <div class="invalid-feedback">Please enter your New Category</div>
-                    </div>
 
-                    
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Update Category</button>
-                    </div>
-                   
-                  </form>
+
+							<div class="row mb-3">
+								<div class="col-2"></div>
+								<div class="col-2">
+									<button class="btn btn-primary w-100" type="submit">Update
+										Category</button>
+
+								</div>
+								<div class="col-2">
+									<a class="btn btn-danger w-100" href="listcategories" type="button">Cancel</a>
+
+								</div>
+
+							</div>
+
+
+
+						</form>
                   <br><br>
                     <div class="col-6"><a href="listcategories"> <button class="btn btn-primary w-100" type="submit">Cancel</button></a>
                      

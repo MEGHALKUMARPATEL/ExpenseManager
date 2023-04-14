@@ -27,4 +27,8 @@ public class StatusDao {
 		List<StatusBean> list = stmt.query(selectQuery, new BeanPropertyRowMapper<StatusBean>(StatusBean.class));
 		return list;
 	}
+	public void deleteStatus(Integer statusId) {
+
+		stmt.update("delete from status where statusId = ?",statusId);
+	}
 }

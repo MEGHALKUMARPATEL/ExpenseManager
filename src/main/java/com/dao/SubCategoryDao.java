@@ -44,4 +44,10 @@ public class SubCategoryDao {
 			}
 			return subCategoryBean;
 	}
+	
+	public void updateSubCategory(SubCategoryBean subCategory) {
+		stmt.update("update subCategory set subCategoryName = ? , categoryId = ? where subCategoryId = ? ",
+				subCategory.getSubCategoryName(), subCategory.getCategoryId(), subCategory.getSubCategoryId());
+	}
+
 }

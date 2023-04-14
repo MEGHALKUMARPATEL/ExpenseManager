@@ -75,11 +75,11 @@
 	<jsp:include page="AdminSideBar.jsp" ></jsp:include>
 	
 	<!-- ======= Header ======= -->
-	<header id="header" class="header fixed-top d-flex align-items-center">
+ 	<header id="header" class="header fixed-top d-flex align-items-center">
 
 		<div class="d-flex align-items-center justify-content-between">
 			<a href="index.html" class="logo d-flex align-items-center"> <img
-				src="assets/img/logo.png" alt=""> <span
+				src="" alt=""> <span
 				class="d-none d-lg-block">Expense Manager</span>
 			</a> <i class="bi bi-list toggle-sidebar-btn"></i>
 		</div>
@@ -121,7 +121,7 @@
 							<hr class="dropdown-divider">
 						</li>
 
-						<li class="notification-item"><i
+						<!-- <li class="notification-item"><i
 							class="bi bi-exclamation-circle text-warning"></i>
 							<div>
 								<h4>Lorem Ipsum</h4>
@@ -165,7 +165,7 @@
 								<p>4 hrs. ago</p>
 							</div></li>
 
-						<li>
+						<li> -->
 							<hr class="dropdown-divider">
 						</li>
 						<li class="dropdown-footer"><a href="#">Show all
@@ -185,7 +185,7 @@
 						<li class="dropdown-header">You have 3 new messages <a
 							href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View
 									all</span></a>
-						</li>
+		<!-- 				</li>
 						<li>
 							<hr class="dropdown-divider">
 						</li>
@@ -225,7 +225,7 @@
 									<p>8 hrs. ago</p>
 								</div>
 						</a></li>
-						<li>
+						<li> -->
 							<hr class="dropdown-divider">
 						</li>
 
@@ -238,15 +238,15 @@
 				<li class="nav-item dropdown pe-3"><a
 					class="nav-link nav-profile d-flex align-items-center pe-0"
 					href="#" data-bs-toggle="dropdown"> <img
-						src="assets/img/profile-img.jpg" alt="Profile"
+						src="assets/profiles/3/profile1.png" alt="Profile"
 						class="rounded-circle"> <span
-						class="d-none d-md-block dropdown-toggle ps-2">K.Anderson</span>
+						class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
 				</a> <!-- End Profile Iamge Icon -->
 
 					<ul
 						class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 						<li class="dropdown-header">
-							<h6>Kevin Anderson</h6> <span>Web Designer</span>
+							<h6>Admin</h6> <span> User Manager</span>
 						</li>
 						<li>
 							<hr class="dropdown-divider">
@@ -307,7 +307,7 @@
 			</nav>
 		</div>
 		<!-- End Page Title -->
-
+            <!-- START WIDGETS -->
 		<section class="section dashboard">
 			<div class="row">
 
@@ -483,6 +483,8 @@
 						<!-- End Customers Card -->
 					</div>
 					
+					<!-- END WIDGETS -->
+					<!-- START CHART -->
 								<%
 									List<ExpenseChartBean> chartData = (List<ExpenseChartBean>) request.getAttribute("chartData");
 								%>
@@ -557,9 +559,12 @@
 
 						</div>
 					</div> 
-					<!-- End Reports -->
+					 <!-- End  LINE chart -->
+					 <!-- Make new chart from here -->
 
-					<!-- Recent Sales -->
+				
+				
+				<!-- entry mpankvaihim -->
 					<div class="col-12">
 						<div class="card recent-sales overflow-auto">
 
@@ -579,13 +584,13 @@
 
 							<div class="card-body">
 								<h5 class="card-title">
-									Recent Sales <span>| Today</span>
+									Recent Expense <span>| Today</span>
 								</h5>
 
 								<table class="table table-borderless datatable">
 									<thead>
 										<tr>
-											<th scope="col">#</th>
+											<th scope="col">ID</th>
 											<th scope="col">Customer</th>
 											<th scope="col">Product</th>
 											<th scope="col">Price</th>
@@ -594,45 +599,45 @@
 									</thead>
 									<tbody>
 										<tr>
-											<th scope="row"><a href="#">#2457</a></th>
-											<td>Brandon Jacob</td>
-											<td><a href="#" class="text-primary">At praesentium
-													minu</a></td>
-											<td>$64</td>
+											<th scope="row"><a href="#">1</a></th>
+											<td> Meghal</td>
+											<td><a href="#" class="text-primary"> Shoes
+													</a></td>
+											<td>1000</td>
 											<td><span class="badge bg-success">Approved</span></td>
 										</tr>
 										<tr>
-											<th scope="row"><a href="#">#2147</a></th>
-											<td>Bridie Kessler</td>
-											<td><a href="#" class="text-primary">Blanditiis
-													dolor omnis similique</a></td>
-											<td>$47</td>
+											<th scope="row"><a href="#">2</a></th>
+											<td>Pankaj Luhar</td>
+											<td><a href="#" class="text-primary">Grocery
+													</a></td>
+											<td>1007</td>
 											<td><span class="badge bg-warning">Pending</span></td>
 										</tr>
 										<tr>
-											<th scope="row"><a href="#">#2049</a></th>
-											<td>Ashleigh Langosh</td>
-											<td><a href="#" class="text-primary">At recusandae
-													consectetur</a></td>
-											<td>$147</td>
+											<th scope="row"><a href="#">3</a></th>
+											<td>Vaibhav</td>
+											<td><a href="#" class="text-primary">Laptop
+											</a></td>
+											<td>200000</td>
 											<td><span class="badge bg-success">Approved</span></td>
 										</tr>
 										<tr>
-											<th scope="row"><a href="#">#2644</a></th>
-											<td>Angus Grady</td>
-											<td><a href="#" class="text-primar">Ut voluptatem id
-													earum et</a></td>
-											<td>$67</td>
+											<th scope="row"><a href="#">4</a></th>
+											<td>Himansh</td>
+											<td><a href="#" class="text-primar"> Bike
+												</a></td>
+											<td>2007</td>
 											<td><span class="badge bg-danger">Rejected</span></td>
 										</tr>
-										<tr>
+										<!-- <tr>
 											<th scope="row"><a href="#">#2644</a></th>
 											<td>Raheem Lehner</td>
 											<td><a href="#" class="text-primary">Sunt similique
 													distinctio</a></td>
 											<td>$165</td>
 											<td><span class="badge bg-success">Approved</span></td>
-										</tr>
+										</tr> -->
 									</tbody>
 								</table>
 
@@ -640,9 +645,12 @@
 
 						</div>
 					</div>
+					
+					 <!-- end mpankvaihim  -->
 					<!-- End Recent Sales -->
 
 					<!-- Top Selling -->
+					<!-- image selling -->
 					<div class="col-12">
 						<div class="card top-selling overflow-auto">
 
@@ -728,6 +736,7 @@
 
 						</div>
 					</div>
+					 <!-- image selling -->
 					<!-- End Top Selling -->
 
 				</div>
@@ -928,11 +937,11 @@
 								<li><a class="dropdown-item" href="#">This Year</a></li>
 							</ul>
 						</div>
-
+<!-- 
 						<div class="card-body pb-0">
 							<h5 class="card-title">
 								News &amp; Updates <span>| Today</span>
-							</h5>
+							</h5> -->
 							<!-- 
               <div class="news">
                 <div class="post-item clearfix">
@@ -979,19 +988,19 @@
 	<!-- End #main -->
 
 	<!-- ======= Footer ======= -->
-	<footer id="footer" class="footer">
+<!-- 	<footer id="footer" class="footer">
 		<div class="copyright">
 			&copy; Copyright <strong><span>Expense Manager</span></strong>. All
 			Rights Reserved
 		</div>
 		<div class="credits">
-			<!-- All the links in the footer should remain intact. -->
-			<!-- You can delete the links only if you purchased the pro version. -->
-			<!-- Licensing information: https://bootstrapmade.com/license/ -->
-			<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+			All the links in the footer should remain intact.
+			You can delete the links only if you purchased the pro version.
+			Licensing information: https://bootstrapmade.com/license/
+			Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
 			Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
 		</div>
-	</footer>
+	</footer> -->
 	<!-- End Footer -->
 
 	<a href="#"

@@ -61,7 +61,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Tables / Expense Manager | ListCategory</title>
+<title>Tables | Expense Manager | ListCategory</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 <meta content="" name="description">
 <meta content="" name="keywords">
@@ -111,25 +111,37 @@
 											<th>Action</th>
 										</tr>
 									</thead>
-									<tbody>
-										<%
-											for (CategoryBean cb : list) {
-										%>
-										
-										<tr>
-											<td><%=cb.getCategoryId()%></td>
-											<td><%=cb.getCategoryName()%></td>
-											<td><%=cb.getDeleted()%></td>
-											<td><a href="deletecategory/<%=cb.getCategoryId()%>">Delete</a>
-												| <a href="../viewcategory?categoryId=<%=cb.getCategoryId()%>">View</a>
-												|<a href="../editcategory?categoryId=<%=cb.getCategoryId()%>">Edit</a></td>
-										
-										</tr>
+								<tbody>
+									<%
+										for (CategoryBean cb : list) {
+									%>
+									<tr>
+										 
+										<td><%=cb.getCategoryName()%></td>
+										<td>
+											<div class="form-check form-switch">
 
-										<%
-											}
-										%>
-									</tbody>
+
+												<input class="form-check-input" onclick="changeStatus(<%=cb.getCategoryId()%>,<%=cb.getDeleted() %>)" type="checkbox"
+													id="flexSwitchCheckChecked"
+													<%=!cb.getDeleted() ? "checked" : ""%>>
+
+											</div>
+										</td>
+										<td><a
+											href="viewcategory?categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-eye"></i>   </a>
+											|
+											
+										<a
+											href="editcategory?categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-pencil"></i>   </a>
+											
+											</td>
+									</tr>
+
+									<%
+										}
+									%>
+								</tbody>
 								</table>
 								<a href="newcategory"><i class="bi bi-plus-circle-fill fs-2" style="size: 250px"></i>Add New Category</a>
 							</div>

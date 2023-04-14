@@ -40,7 +40,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pages / Register - NiceAdmin Bootstrap Template</title>
+  <title> Expense Manager </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -93,7 +93,7 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">NiceAdmin</span>
+                  <span class="d-none d-lg-block"> Expense Manager </span>
                 </a>
               </div><!-- End Logo -->
 
@@ -154,8 +154,8 @@
                 
                   
                 </div>
-                <div class="text-center">
-                  <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2" onclick="validation()" value="Signup">Sign up</button>
+            
+                  <button type="button" class="btn btn-primary w-100"  type ="submit" onclick="validation()" value="Signup">Sign up</button>
                 </div>
                 <p class="text-sm mt-3 mb-0">Already have an account? <a href="login" class="text-dark font-weight-bolder">Sign in</a></p>
               </form>
@@ -246,7 +246,7 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+             
               </div>
 
             </div>
