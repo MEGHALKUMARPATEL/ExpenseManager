@@ -24,7 +24,7 @@ public class SubCategoryController {
 	
 	@GetMapping("/subcategories")
 	public String subCategories(Model model) {
-		List<CategoryBean> list = categoryDao.getAllCategory();
+		List<CategoryBean> list = categoryDao.getAvailableCategory();
 		System.out.println(categoryDao.getAllCategory());
 		model.addAttribute("list",list);
 		return "NewSubCategory";
@@ -79,6 +79,6 @@ public class SubCategoryController {
 	public String updateSubCategory(SubCategoryBean subCategory) {
 		subCategoryDao.updateSubCategory(subCategory);
 		
-		return "redirect:/listsubcategory";
+		return "redirect:/listsubcategories";
 	}
 }

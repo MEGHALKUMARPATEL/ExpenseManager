@@ -164,6 +164,62 @@ public class SessionController {
 		return "redirect:/login";
 	}
 	
+	/*
+	 * @GetMapping("/edituser") public String editUser(@RequestParam("userId")
+	 * Integer userId, Model model) { UserBean userBean =
+	 * userDao.getUserById(userId); System.out.println(userBean.getUserId());
+	 * model.addAttribute("userBean",userBean); return "EditUser"; }
+	 * 
+	 * @PostMapping("/updateuser") public String updateUser(UserBean userBean) {
+	 * userDao.updateUser(userBean);
+	 * 
+	 * return "redirect:/listusers"; }
+	 * 
+	 * @GetMapping("/userProfile") public String userProfile() {
+	 * 
+	 * return "UserProfile"; }
+	 * 
+	 * // @PostMapping("/updateprofilephoto") // public String
+	 * updateProfilePhoto(ProfileBean profileBean) { //
+	 * System.out.println(profileBean.getUserId()); //
+	 * System.out.println(profileBean.getProfileImg().getOriginalFilename()); // try
+	 * { // File userDir = new File(
+	 * "C:\\Users\\Hp\\Documents\\workspace-spring-tool-suite-4-4.17.2.RELEASE\\ExpenseManager\\src\\main\\resources\\static\\assets\\profiles"
+	 * ,profileBean.getUserId() + ""); // if(userDir.exists() == false) { //
+	 * userDir.mkdir(); // } // File file = new File(userDir,
+	 * profileBean.getProfileImg().getOriginalFilename()); //
+	 * FileUtils.writeByteArrayToFile(file, profileBean.getProfileImg().getBytes());
+	 * // profileBean.setImageUrl("assets/profiles/" + profileBean.getUserId() + "/"
+	 * + profileBean.getProfileImg().getOriginalFilename()); // //
+	 * userDao.updateProfilePhoto(profileBean); // // } catch (Exception e) { //
+	 * e.printStackTrace(); //
+	 * System.out.println("Error Session Controller Update Profile"); // } // return
+	 * "redirect:/userProfile"; // } //
+	 * 
+	 * @PostMapping("/updateprofilephoto") public String updateProfile(ProfileBean
+	 * profileBean) { System.out.println(profileBean.getUserId());
+	 * System.out.println(profileBean.getProfileImg().getOriginalFilename()); try {
+	 * File userDir = new File(
+	 * "C:\\Users\\Hp\\Documents\\workspace-spring-tool-suite-4-4.17.2.RELEASE\\ExpenseManager\\src\\main\\resources\\static\\assets\\profiles"
+	 * ,profileBean.getUserId() + ""); if (userDir.exists() == false) {
+	 * userDir.mkdir(); } File file = new File(userDir,
+	 * profileBean.getProfileImg().getOriginalFilename());
+	 * FileUtils.writeByteArrayToFile(file, profileBean.getProfileImg().getBytes());
+	 * profileBean.setImageUrl("assets/profiles/" + profileBean.getUserId() + "/" +
+	 * profileBean.getProfileImg().getOriginalFilename());
+	 * 
+	 * userDao.updateProfilePhoto(profileBean);
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); } return
+	 * "redirect:/userProfile";
+	 * 
+	 * }
+	 * 
+	 * @PostMapping("/updateuserprofile") public String updateUserProfile(UserBean
+	 * userBean) { userDao.updateUser(userBean);
+	 * System.out.println(userBean.getDateofbirth()); return
+	 * "redirect:/userProfile"; }
+	 */
 	
 	//jsp input process
 }

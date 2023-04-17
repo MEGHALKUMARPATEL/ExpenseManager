@@ -44,5 +44,17 @@ public class VendorController {
 		vendorDao.deleteVendor(vendorId);
 		return "redirect:/listvendor";
 	}
-
+	
+	/*
+	 * @GetMapping("/editvendor") public String editVendor(@RequestParam("vendorId")
+	 * Integer vendorId, Model model) { VendorBean vendorBean =
+	 * vendorDao.getVendorById(vendorId);
+	 * System.out.println(vendorBean.getVendorId());
+	 * model.addAttribute("vendorBean",vendorBean); return "EditVendor"; }
+	 * 
+	 * @PostMapping("/updatevendor") public String updateVendor(VendorBean
+	 * vendorBean) { vendorDao.updateVendor(vendorBean);
+	 * 
+	 * return "redirect:/listvendor"; }
+	 */
 }

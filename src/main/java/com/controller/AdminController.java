@@ -1,4 +1,4 @@
-package com.controller;
+ package com.controller;
 
 import java.util.List;
 import java.io.File;
@@ -48,6 +48,40 @@ public class AdminController {
 		Integer totalMonthlyExpenseAmount = adminDao.getTotalExpenseAmountCurrentMonth();
 		Integer totalMonthlyClientsCount = adminDao.getTotalClientCountForCurrentMonth();
 		List<ExpenseChartBean> chartData = adminDao.getExpenseStats();
+		/* List<IncomeChartBean> incomeChartData = adminDao.getIncomeStats(); */
+		
+
+		
+//		Double yesterdayExpenseAmount = (Double.valueOf(adminDao.getYesterdayExpenseAmount()));
+		
+//		Integer a = 10;
+//		Integer b = 20;
+//		
+//		Integer average = (a + b)/2;
+//		System.out.println(average);
+//		Integer difference = b-a; 
+//		Integer change = ((difference * 100)/(average * 100))*100;
+//		System.out.println(change);
+		
+//		Double average = (sumOfTodayExpenseAmount + yesterdayExpenseAmount) / 2;
+//	    System.out.println(average);
+		//	Integer changePercentage ;
+//		Integer positiveChange=0 ;
+//		Integer negativeChange=0;
+//		Double difference = sumOfTodayExpenseAmount - yesterdayExpenseAmount;
+//		System.out.println(difference);
+//		if(difference > 0) {
+//			positiveChange = (int) (((difference * 100)/(average * 100))*100);
+//		} else if(difference < 0) {
+//			negativeChange = (int) (((difference * 100)/(average * 100))*100);
+		
+		
+//		System.out.println(positiveChange);
+//		System.out.println(negativeChange);
+		
+//		System.out.println(changeInTodayExpenseAmount);
+//		System.out.println(sumOfTodayExpenseAmount);
+		
 
 		System.out.println("Total monthly Expense"+totalMonthlyExpenseAmount);
 		System.out.println("Sum of Today Expense"+sumOfTodayExpenseAmount);
@@ -57,6 +91,9 @@ public class AdminController {
 		model.addAttribute("totalExpenseAmountCurrentMonth", totalMonthlyExpenseAmount);
 		model.addAttribute("totalMonthlyClientsCount", totalMonthlyClientsCount);
 		model.addAttribute("chartData", chartData);
+		/* model.addAttribute("incomeChartData",incomeChartData); */
+		/* model.addAttribute("changeInTodayExpenseAmount",positiveChange); */
+		//model.addAttribute("changeInTodayExpenseAmount",negativeChange);
 		return "AdminDashboard";
 	}
 	

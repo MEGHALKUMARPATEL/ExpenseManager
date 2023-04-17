@@ -31,14 +31,23 @@ int userId = -1;
 			
 //			System.out.println("userId---" + userId);
 		
-		Integer sumOfTodayExpense = homePageDao.getSumOfExpenseAmountForCurrentDate(userId);
-		Integer sumOfMonthlyExpense = homePageDao.getSumOfExpenseAmountForCurrentMonth(userId);
-		Integer sumOfMonthlyIncome = homePageDao.getSumOfIncomeAmountForCurrentMonth(userId);
 			
-				model.addAttribute("totalTodayExpensesAmount",sumOfTodayExpense);
-				model.addAttribute("totalMonthlyExpenseAmount",sumOfMonthlyExpense);
-				model.addAttribute("totalMonthlyIncomeAmount",sumOfMonthlyIncome);
-			return "Home";
+			Integer sumOfTodayExpense = homePageDao.getSumOfExpenseAmountForCurrentDate(userId);
+			Integer sumOfMonthlyExpense = homePageDao.getSumOfExpenseAmountForCurrentMonth(userId);
+			Integer sumOfMonthlyIncome = homePageDao.getSumOfIncomeAmountForCurrentMonth(userId);
+			Integer sumOfYearlyExpense = homePageDao.getSumOfExpenseAmountForCurrentYear(userId);
+			/*List<ExpenseChartBean> expenseChartData = homePageDao.getExpenseStats(userId);
+//			List<IncomeChartBean> incomeChartData = homePageDao.getIncomeStats(userId);
+*/				
+					model.addAttribute("totalTodayExpensesAmount",sumOfTodayExpense);
+					model.addAttribute("totalMonthlyExpenseAmount",sumOfMonthlyExpense);
+					model.addAttribute("totalMonthlyIncomeAmount",sumOfMonthlyIncome);
+					model.addAttribute("sumOfYearlyExpense",sumOfYearlyExpense);
+					/*model.addAttribute("expenseChartDataUser",expenseChartData);*/
+//					model.addAttribute("incomeChartDataUser",incomeChartData);
+					return "Home";
+			}
 		}
 	
-}
+	
+

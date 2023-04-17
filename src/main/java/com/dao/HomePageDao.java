@@ -31,19 +31,21 @@ public class HomePageDao {
 //		System.out.println("userID => " + userId);
 		String countQuery = "select sum(amount) from expense where userId = ? and date like ?";
 
-		String today = "";
+//		String today = "";
 //		
-		if(m<=9){
-			today = y + "-0"+m + "-" +d;
-		}else if(m>9){
-			today = y + "-"+m + d; 
-		}
+//		if(m<=9){
+//			today = y + "-0"+m + "-" +d;
+//		}else if(m>9){
+//			today = y + "-"+m + d; 
+//		}
+//		
+//		if(d <= 9){
+//			today = today + "-0" +d;
+//		}else if(d>10){
+//			today =today + "-" +d;
+//		}
 		
-		if(d <= 9){
-			today = today + "-0" +d;
-		}else if(d>10){
-			today =today + "-" +d;
-		}
+		LocalDate today = LocalDate.now();
 		System.out.println("today => " + today);
 		Integer sumExpenseToday;
 
@@ -105,8 +107,20 @@ public class HomePageDao {
 //		 System.out.println(sumIncomeMonthly);
 		return sumIncomeMonthly;
 	}
-	
-	
+
+	 public Integer getSumOfExpenseAmountForCurrentYear(int userId) {
+		String countQuery = "select sum(amount) from expense where userId = ? and date like ?";
+		
+		date = year + "%";
+		Integer sumExpenseYearly;
+		try {
+				sumExpenseYearly = stmt.queryForObject(countQuery, Integer.class, new Object[] {userId, date});
+		} catch (Exception e) {
+			return 0;
+		}
+		return sumExpenseYearly;
+	}
+
 	
 
 }

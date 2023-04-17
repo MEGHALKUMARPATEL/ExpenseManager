@@ -106,9 +106,9 @@
 								<table class="table datatable" id="listsubcategory">
 									<thead>
 										<tr>
-											<th>SubCategoryId</th>
+											
 											<th>SubCategoryName</th>
-											<th>Deleted?</th>
+											<th>Category Name</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -130,7 +130,7 @@
 									%>
 								</tbody>
 								</table>
-								<a href="subcategory"><i class="bi bi-plus-circle-fill fs-2" style="size: 250px"></i>Add New Sub Category</a>
+								<a href="subcategories"><i class="bi bi-plus-circle-fill fs-2" style="size: 250px"></i>Add New Sub Category</a>
 							</div>
 						 
 

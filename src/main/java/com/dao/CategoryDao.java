@@ -22,14 +22,22 @@ public class CategoryDao {
 		}
 
 		public List<CategoryBean> getAllCategory() {
-			String selectQuery = "select * from category where deleted = false";
+			String selectQuery = "select * from category";
 			List<CategoryBean> list = stmt.query(selectQuery, new BeanPropertyRowMapper<CategoryBean>(CategoryBean.class));
 			return list;
 		}
 		
-		public void deleteCategory(Integer categoryId) {
-			String updateQuery = "update category set deleted = true where categoryId = ?";
-			stmt.update(updateQuery,categoryId);
+
+		public List<CategoryBean> getAvailableCategory() {
+			String selectQuery = "select * from category where deleted= false";
+			List<CategoryBean> list = stmt.query(selectQuery, new BeanPropertyRowMapper<CategoryBean>(CategoryBean.class));
+			return list;
+		}
+		
+		public void deleteCategory(Integer categoryId, Boolean currentStatus) {
+			currentStatus =! currentStatus;
+			String updateQuery = "update category set deleted = ? where categoryId = ?";
+			stmt.update(updateQuery,currentStatus,categoryId);
 			
 		}
 
@@ -51,5 +59,7 @@ public class CategoryDao {
 			stmt.update(updateQuery, categoryBean.getCategoryName(),categoryBean.getCategoryId());
 			
 		}
+		
+		
 	
 }

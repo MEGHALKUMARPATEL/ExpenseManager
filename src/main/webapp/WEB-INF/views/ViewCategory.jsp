@@ -43,7 +43,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Tables / Expense Manager | ListCategory</title>
+<title>Tables | Expense Manager | ListCategory</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 <meta content="" name="description">
 <meta content="" name="keywords">

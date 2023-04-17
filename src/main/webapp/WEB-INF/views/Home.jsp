@@ -421,7 +421,7 @@
 
 								<div class="card-body">
 									<h5 class="card-title">
-								 This Month New Clients	 <span>| This Month</span>
+								Current Month Income <span>| Income</span>
 									</h5>
 
 									<div class="d-flex align-items-center">
@@ -463,7 +463,7 @@
 
 								<div class="card-body">
 									<h5 class="card-title">
-									 Month Expense <span>| This Month</span>
+									 Current Year <span>| Expenses</span>
 									</h5>
 
 									<div class="d-flex align-items-center">
@@ -472,7 +472,7 @@
 											<i class="bi bi-people"></i>
 										</div>
 										<div class="ps-3">
-											<h6>${totalExpenseAmountCurrentMonth==null?0:totalExpenseAmountCurrentMonth}</h6>
+											<h6>${sumOfYearlyExpense==null?0:sumOfYearlyExpense}</h6>
 											<span class="text-danger small pt-1 fw-bold">12%</span> <span
 												class="text-muted small pt-2 ps-1">decrease</span>
 

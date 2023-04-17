@@ -90,4 +90,40 @@ public class IncomeController {
 			return "ListIncome";
 		}
 		
+		/*
+		 * @GetMapping("/viewincome") public String
+		 * viewIncome(@RequestParam("incomeId")Integer incomeId, Model model) {
+		 * System.out.println(incomeId); IncomeBean incomeBean =
+		 * incomeDao.getIncomeById(incomeId);
+		 * System.out.println(incomeBean.getIncomeId());
+		 * model.addAttribute("incomeBean", incomeBean); return "ViewIncome"; }
+		 * 
+		 * @GetMapping("/listincomesadmin") public String listIncomesAdmin(Model model)
+		 * { List<IncomeBean> incomelist = incomeDao.getAllInocmes();
+		 * model.addAttribute("incomelist",incomelist);
+		 * 
+		 * return "ListIncomesAdmin"; }
+		 * 
+		 * @GetMapping("/viewincomes") public String
+		 * viewIncomes(@RequestParam("incomeId") Integer incomeId, Model model) {
+		 * IncomeBean incomeBean = incomeDao.getIncomeById(incomeId);
+		 * model.addAttribute("incomeBean",incomeBean); //
+		 * System.out.println(incomeBean.getExpenseImg().getOriginalFilename()); //
+		 * System.out.println(expenseBean.getImageUrl()); return "ViewIncomeAdmin"; }
+		 * 
+		 * @GetMapping("/editincome") public String editIncome(@RequestParam("incomeId")
+		 * Integer incomeId, Model model) { IncomeBean incomeBean =
+		 * incomeDao.getIncomeById(incomeId); List<AccountTypeBean> accountTypeList =
+		 * accountTypeDao.getAllAccountType(); List<StatusBean> statusList =
+		 * statusDao.getAllStatus(); System.out.println(incomeBean.getIncomeId());
+		 * model.addAttribute("incomeBean",incomeBean);
+		 * model.addAttribute("accountTypeList",accountTypeList);
+		 * model.addAttribute("statusList",statusList); return "EditIncome"; }
+		 * 
+		 * @PostMapping("/updateincome") public String updateIncome(IncomeBean
+		 * incomeBean) { incomeDao.updateIncome(incomeBean);
+		 * 
+		 * return "redirect:/listincome"; }
+		 */
+		
 }

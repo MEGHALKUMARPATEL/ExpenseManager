@@ -33,4 +33,22 @@ public class IncomeDao {
 			List<IncomeBean> incomelist = stmt.query(selectQuery, new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class),new Object[] {userId});
 			return incomelist;
 		}
+
+		/*
+		 * public IncomeBean getIncomeById(Integer incomeId) { IncomeBean incomeBean =
+		 * null;
+		 * 
+		 * try { incomeBean = stmt.
+		 * queryForObject("select i.incomeId, i.title, i.amount,i.date,i.description, a.accountTypeName, s.statusName from income i, accounttype a, status s where i.accountTypeId=a.accountTypeId and s.statusId= i.statusId and incomeId = ?"
+		 * , new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class), new Object[]
+		 * {incomeId});
+		 * 
+		 * } catch (Exception e) { System.out.println("incomeDao :: getIncomeById()");
+		 * System.out.println(e.getMessage()); } return incomeBean; }
+		 * 
+		 * public void updateIncome(IncomeBean incomeBean) { // TODO Auto-generated
+		 * method stub
+		 * 
+		 * }
+		 */
 }

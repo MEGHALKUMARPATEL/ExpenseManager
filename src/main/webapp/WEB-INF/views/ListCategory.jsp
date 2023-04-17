@@ -105,9 +105,8 @@
 								<table class="table datatable" id="listcategory">
 									<thead>
 										<tr>
-											<th>CategoryId</th>
 											<th>CategoryName</th>
-											<th>Deleted?</th>
+											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -156,6 +155,11 @@
 	</main>
 
 <jsp:include page="AllJS.jsp"></jsp:include>
+<script type="text/javascript">
+		function changeStatus(categoryId, currentStatus){
+			location.href = "deletecategory/"+categoryId+"/"+currentStatus;
+		}
+	</script>
 </body>
 
 </html>

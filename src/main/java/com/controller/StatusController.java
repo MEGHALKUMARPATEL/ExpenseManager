@@ -44,5 +44,17 @@ public class StatusController {
 		statusDao.deleteStatus(statusId);
 		return "redirect:/liststatus";
 	}
-
+	
+	/*
+	 * @GetMapping("/editstatus") public String editStatus(@RequestParam("statusId")
+	 * Integer statusId, Model model) { StatusBean statusBean =
+	 * statusDao.getStatusById(statusId);
+	 * System.out.println(statusBean.getStatusId());
+	 * model.addAttribute("statusBean",statusBean); return "EditStatus"; }
+	 * 
+	 * @PostMapping("/updatestatus") public String updateStatus(StatusBean
+	 * statusBean) { statusDao.updateStatus(statusBean);
+	 * 
+	 * return "redirect:/liststatus"; }
+	 */
 }

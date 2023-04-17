@@ -2,6 +2,7 @@ package com.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
@@ -63,16 +64,15 @@ public class CategoryController {
 		return "ListCategory";
 	}
 	
-	@GetMapping("/deletecategory/{categoryId}")
-	public String deleteCategory(@PathVariable("categoryId") Integer categoryId) {
+	@GetMapping("/deletecategory/{categoryId}/{currentStatus}")
+	public String deleteCategory(@PathVariable("categoryId") Integer categoryId,@PathVariable("currentStatus") boolean currentStatus) {
 		//12 45 
-		categoryDao.deleteCategory(categoryId);
+		categoryDao.deleteCategory(categoryId,currentStatus);
 		return "redirect:/listcategories";//
 	}
 	
 	@GetMapping("/viewcategory")
-	public String viewCategory(@RequestParam("categoryId") Integer categoryId, Model model)
-	{
+	public String viewCategory(@RequestParam("categoryId") Integer categoryId, Model model) {
 		CategoryBean categoryBean = categoryDao.getCategoryById(categoryId);
 		model.addAttribute("categoryBean",categoryBean);
 		return "ViewCategory";

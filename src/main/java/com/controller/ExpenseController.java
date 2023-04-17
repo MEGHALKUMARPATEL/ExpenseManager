@@ -114,5 +114,82 @@ public class ExpenseController {
 		model.addAttribute("expenselist",expenselist);
 		return "ListExpense";
 	}
-
+	
+	/*
+	 * @GetMapping("/listexpensesadmin") public String listExpensesAdmin(Model
+	 * model) { List<ExpenseBean> expenselist = expenseDao.getAllExpense();
+	 * model.addAttribute("expenselist",expenselist);
+	 * 
+	 * return "ListExpensesAdmin"; }
+	 * 
+	 * @GetMapping("/viewexpense") public String
+	 * viewExpense(@RequestParam("expenseId") Integer expenseId, Model model) {
+	 * ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
+	 * model.addAttribute("expenseBean",expenseBean); //
+	 * System.out.println(expenseBean.getExpenseImg().getOriginalFilename());
+	 * System.out.println(expenseBean.getImageUrl()); return "ViewExpense"; }
+	 * 
+	 * @GetMapping("/viewexpenses") public String
+	 * viewExpenses(@RequestParam("expenseId") Integer expenseId, Model model) {
+	 * ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
+	 * model.addAttribute("expenseBean",expenseBean); //
+	 * System.out.println(expenseBean.getExpenseImg().getOriginalFilename());
+	 * System.out.println(expenseBean.getImageUrl()); return "ViewExpensesAdmin"; }
+	 * 
+	 * @GetMapping("/editexpense") public String
+	 * editExpense(@RequestParam("expenseId") Integer expenseId, Model model) {
+	 * ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
+	 * List<CategoryBean> categoryList = categoryDao.getAllCategory();
+	 * List<SubCategoryBean> subCategoryList = subCategoryDao.getAllSubCategory();
+	 * List<AccountTypeBean> accountTypeList = accountTypeDao.getAllAccountType();
+	 * List<VendorBean> vendorList = vendorDao.getAllVendor(); List<StatusBean>
+	 * statusList = statusDao.getAllStatus();
+	 * System.out.println(expenseBean.getExpenseId());
+	 * System.out.println(expenseBean.getTitle());
+	 * model.addAttribute("expenseBean",expenseBean);
+	 * model.addAttribute("categoryList",categoryList);
+	 * model.addAttribute("subCategoryList",subCategoryList);
+	 * model.addAttribute("vendorList",vendorList);
+	 * model.addAttribute("accountTypeList",accountTypeList);
+	 * model.addAttribute("statusList",statusList);
+	 * 
+	 * return "EditExpense"; }
+	 * 
+	 * @PostMapping("/updateexpense") public String updateExpense(ExpenseBean
+	 * expenseBean) { expenseDao.updateExpense(expenseBean);
+	 * 
+	 * return "redirect:/listexpense"; }
+	 * 
+	 * @PostMapping("/deleteexpense") public String deleteExpense(ExpenseBean
+	 * expenseBean) { expenseDao.deleteExpense(expenseBean); return
+	 * "redirect:/listexpense"; }
+	 * 
+	 * @GetMapping("/addexpenseimg") public String
+	 * addExpenseImg(@RequestParam("expenseId") Integer expenseId, Model model) {
+	 * ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
+	 * model.addAttribute("expenseBean",expenseBean); return "ExpenseAddImage"; }
+	 * 
+	 * @PostMapping("/addexpenseimg") public String addExpenseImg(ExpenseBean
+	 * expenseBean) { System.out.println(expenseBean.getExpenseId());
+	 * System.out.println(expenseBean.getExpenseImg().getOriginalFilename()); try {
+	 * File userDir = new File(
+	 * "C:\\Users\\Hp\\Documents\\workspace-spring-tool-suite-4-4.17.2.RELEASE\\ExpenseManager\\src\\main\\resources\\static\\assets\\expenseimg"
+	 * ,expenseBean.getExpenseId() + ""); if(userDir.exists() == false) {
+	 * userDir.mkdir(); } File file = new File(userDir,
+	 * expenseBean.getExpenseImg().getOriginalFilename());
+	 * FileUtils.writeByteArrayToFile(file, expenseBean.getExpenseImg().getBytes());
+	 * expenseBean.setImageUrl("assets/expenseimg/" + expenseBean.getExpenseId() +
+	 * "/" + expenseBean.getExpenseImg().getOriginalFilename());
+	 * 
+	 * expenseDao.addExpenseImg(expenseBean);
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); }
+	 * 
+	 * return "redirect:/viewexpense";
+	 * 
+	 * }
+	 */
 }
+
+
+
