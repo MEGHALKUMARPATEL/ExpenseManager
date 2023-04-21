@@ -110,7 +110,7 @@
 	</section>
 	</main>
 
-	<jsp:include page="AdminFooter.jsp"></jsp:include>
+	
 	<jsp:include page="AllJS.jsp"></jsp:include>
 	<script>
 		function validateSubCategory() {

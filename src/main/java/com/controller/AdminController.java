@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.bean.ExpenseChartBean;
+import com.bean.IncomeChartBean;
 import com.bean.UserBean;
 import com.dao.AdminDao;
 
@@ -48,7 +49,7 @@ public class AdminController {
 		Integer totalMonthlyExpenseAmount = adminDao.getTotalExpenseAmountCurrentMonth();
 		Integer totalMonthlyClientsCount = adminDao.getTotalClientCountForCurrentMonth();
 		List<ExpenseChartBean> chartData = adminDao.getExpenseStats();
-		/* List<IncomeChartBean> incomeChartData = adminDao.getIncomeStats(); */
+		List<IncomeChartBean> incomeChartData = adminDao.getIncomeStats();
 		
 
 		
@@ -91,7 +92,7 @@ public class AdminController {
 		model.addAttribute("totalExpenseAmountCurrentMonth", totalMonthlyExpenseAmount);
 		model.addAttribute("totalMonthlyClientsCount", totalMonthlyClientsCount);
 		model.addAttribute("chartData", chartData);
-		/* model.addAttribute("incomeChartData",incomeChartData); */
+		 model.addAttribute("incomeChartData",incomeChartData); 
 		/* model.addAttribute("changeInTodayExpenseAmount",positiveChange); */
 		//model.addAttribute("changeInTodayExpenseAmount",negativeChange);
 		return "AdminDashboard";

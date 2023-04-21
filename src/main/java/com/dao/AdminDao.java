@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bean.ExpenseChartBean;
+import com.bean.IncomeChartBean;
 import com.bean.ProfileBean;
 import com.bean.ExpenseChartBean;
 import com.bean.UserBean;
@@ -146,16 +147,16 @@ public class AdminDao {
 //	return stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class), new Object[] {year});
 //}
 //
-//	public List<IncomeChartBean> getIncomeStats() {
-//		String selectQuery = "select monthname(date) as month, avg(amount) as incomeAmount from income where year(date) like ? group by monthname(date) order by month(date)";
-//		LocalDate today = LocalDate.now();
-//		Integer year = today.getYear();
-//		return stmt.query(selectQuery, new BeanPropertyRowMapper<IncomeChartBean>(IncomeChartBean.class), new Object[] {year});
-//	}
+	public List<IncomeChartBean> getIncomeStats() {
+	String selectQuery = "select monthname(date) as month, sum(amount) as incomeAmount from income where year(date) like ? group by monthname(date), month(date)";
+	LocalDate today = LocalDate.now();
+	Integer year = today.getYear();
+	return stmt.query(selectQuery, new BeanPropertyRowMapper<IncomeChartBean>(IncomeChartBean.class), new Object[] {year});
+}
 	
 public List<ExpenseChartBean> getExpenseStats() {
 		
-		String selectQ = "select monthname(date) as month , sum(amount) as expenseAmount from expense where year(date) like ? group by monthname(date),month(date) order by month(date)";
+		String selectQ = "select monthname(date) as month , sum(amount) as expenseAmount from expense where year(date) like ? group by monthname(date),month(date)";
 		
 		LocalDate today = LocalDate.now();
 		Integer year = today.getYear();

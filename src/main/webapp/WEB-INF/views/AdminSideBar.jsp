@@ -47,7 +47,15 @@
           <i class="bi bi-grid"></i>
           <span>Account Type</span>
         </a>
+        
       </li>
+        <li class="nav-item">
+        <a class="nav-link " href="myprofile">
+          <i class="bi bi-grid"></i>
+          <span>My Profile</span>
+        </a>
+      </li>
+ 
       
        <li class="nav-item">
         <a class="nav-link " href="logout">

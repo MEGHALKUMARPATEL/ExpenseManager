@@ -1,3 +1,4 @@
+<%@page import="com.bean.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,10 +9,20 @@
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-
+		
+		<%
+			UserBean user = (UserBean)session.getAttribute("user");
+		%>
 
 	<jsp:include page="HeaderNav.jsp"></jsp:include>
+	
+	<%if(user.getRole() == 1)
+{ %>
 	<jsp:include page="AdminSideBar.jsp"></jsp:include>
+<%} else {%>
+
+		<jsp:include page="UserSideBar.jsp"></jsp:include>
+		<%} %>
 
 
 	<main id="main" class="main">
@@ -82,45 +93,68 @@
               <div class="tab-content pt-2">
 
                 <div class="tab-pane fade profile-overview active show" id="profile-overview" role="tabpanel">
-                  <h5 class="card-title">About</h5>
-                  <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+               
+                
 
                   <h5 class="card-title">Profile Details</h5>
-
+                  
+				<form action="updateuserprofile" method="post">
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                  
+                    <div class="col-lg-3 col-md-4 label ">First Name</div>
+                    <div class="col-lg-9 col-md-8">
+                    <input type="text" value="${user.firstname}" name="firstName">
+                    </div>
                   </div>
-
+				
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Company</div>
-                    <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                   <div class="col-lg-3 col-md-4 label ">Last Name</div>
+                    <div class="col-lg-9 col-md-8">
+  					 <input type="text" value="${user.lastname}" name="lasttName"> 
+  					  </div>
+                  </div> 
+                  
+                   <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Email</label>
+                    <input disabled="disabled" class="form-control" name="email" value="${user.email}" onfocus="focused(this)" onfocusout="defocused(this)">
                   </div>
-
+                </div>
+                  
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Job</div>
-                    <div class="col-lg-9 col-md-8">Web Designer</div>
+                   <div class="col-lg-3 col-md-4 label ">Mobile No</div>
+                    <div class="col-lg-9 col-md-8">
+  					 <input type="text" value="${user.mobileno}" name="mobileno"> 
+  					  </div>
                   </div>
-
+                  
+               <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Gender</label><br>
+                    Male &nbsp<input  type="radio" name="gender" value="male" onfocus="focused(this)" onfocusout="defocused(this)">&nbsp&nbsp
+                    Female &nbsp<input  type="radio" name="gender" value="female" onfocus="focused(this)" onfocusout="defocused(this)">
+                  </div>
+                  
+                  </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Date of Birth</label>
+                    <input class="form-control" type="date" name="dateofbirth" value="${user.dateofbirth }" onfocus="focused(this)" onfocusout="defocused(this)">
+                  </div>
+                </div>
+                  
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Country</div>
-                    <div class="col-lg-9 col-md-8">USA</div>
-                  </div>
+                   <div class="col-lg-3 col-md-4 label ">Designation</div>
+                    <div class="col-lg-9 col-md-8">
+  					 <input type="text" value="${user.designation}" name="designation"> 
+  					  </div>
+                  </div>                
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Address</div>
-                    <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Phone</div>
-                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
-                  </div>
+                  
+                  	<div class="col-6">
+										<button class="btn btn-primary w-100" type="submit">Submit</button>
+									</div>
+									</form>
 
                 </div>
 
@@ -215,7 +249,7 @@
 	
 	</main>
 
-	<jsp:include page="AdminFooter.jsp"></jsp:include>
+
 	<jsp:include page="AllJS.jsp"></jsp:include>
 
 

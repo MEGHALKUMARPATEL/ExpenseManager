@@ -214,12 +214,12 @@ public class SessionController {
 	 * "redirect:/userProfile";
 	 * 
 	 * }
-	 * 
+	 */ 
+	/*
 	 * @PostMapping("/updateuserprofile") public String updateUserProfile(UserBean
-	 * userBean) { userDao.updateUser(userBean);
-	 * System.out.println(userBean.getDateofbirth()); return
-	 * "redirect:/userProfile"; }
+	 * userBean) { userDao.updateUser(userBean); "redirect:/userProfile"; }
 	 */
+	 
 	
 	//jsp input process
 }

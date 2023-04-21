@@ -33,6 +33,8 @@ public class IncomeDao {
 			List<IncomeBean> incomelist = stmt.query(selectQuery, new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class),new Object[] {userId});
 			return incomelist;
 		}
+		
+	
 
 		/*
 		 * public IncomeBean getIncomeById(Integer incomeId) { IncomeBean incomeBean =
