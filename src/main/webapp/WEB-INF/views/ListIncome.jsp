@@ -110,27 +110,33 @@
 								<table class="table datatable" id="listincome">
 									<thead>
 										<tr>
-											<th class="formheadcss">Title</th>
-									       <th class="formheadcss">AccountType</th>
-											<th class="formheadcss">Status</th>
-											<th class="formheadcss">Amount</th>
-											<th class="formheadcss">Date</th>
-											<th class="formheadcss">Description</th>
+										<th>Title</th>
+											<th>Amount</th>
+											<th>Date</th>
+											<th>View Detail</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<%
-										 for(IncomeBean eb : incomelist){
+									<%
+											for(IncomeBean ib:incomelist){
 										%>
-										<tr>
-											<td class="formcss" align="center" ><%=eb.getTitle()%></td>
-											<td class="formcss" align="center"><%=eb.getAccountTypeName()%></td>
-											<td class="formcss" align="center"><%=eb.getStatusName()%></td>
-											<td class="formcss" align="center"><%=eb.getAmount()%></td>
-											<td class="formcss" align="center"><%=eb.getDate()%></td>
-											<td class="formcss" align="center"><%=eb.getDescription()%></td>
-											<%-- <td  align="center"><a class="btn btn-link text-danger text-gradient px-3 mb-0"
-												href="deleteexpense/<%=eb.getExpenseId()%>"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</td> --%>
+											<tr>
+												<td class="formcss" align="center" ><%=ib.getIncomeId()%></td>
+											<td class="formcss" align="center" ><%=ib.getTitle()%></td>
+											<td class="formcss" align="center"><%=ib.getAmount()%></td>
+											<td class="formcss" align="center"><%=ib.getDate()%></td>
+										
+											<td  align="center"><a class="btn btn-link text-gradient px-3 mb-0"
+												href="viewincome?incomeId=<%=ib.getIncomeId()%>"><i class="bi bi-eye"></i> View</td>
+												
+													<td>	<a
+											href="editincome?incomeId=<%=ib.getIncomeId()%>"><i class="bi bi-pencil"></i> Edit
+											</td>
+											  </a>
+											
+											 <td  align="center"><a class="btn btn-link text-danger text-gradient px-3 mb-0"
+												href="deleteincome/<%=ib.getIncomeId()%>"><i class="bi bi-trash text-danger"></i>Delete</td>
 										</tr>
 										<%
 										}

@@ -120,7 +120,9 @@
 											<th class="formheadcss">Title</th>
 											<th class="formheadcss">Amount</th>
 											<th class="formheadcss">Date</th>
-											<th class="formheadcss">View</th>
+											<th class="formheadcss">View Detail</th>
+											<th class="formheadcss">Edit Detail</th>
+											<th class="formheadcss">Delete Detail</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -131,11 +133,17 @@
 											<td class="formcss" align="center" ><%=eb.getTitle()%></td>
 											<td class="formcss" align="center"><%=eb.getAmount()%></td>
 											<td class="formcss" align="center"><%=eb.getDate()%></td>
+										
 											<td  align="center"><a class="btn btn-link text-gradient px-3 mb-0"
 												href="viewexpense?expenseId=<%=eb.getExpenseId()%>"><i class="bi bi-eye"></i> View</td>
+												
+													<td>	<a
+											href="viewexpense?expenseId=<%=eb.getExpenseId()%>"><i class="bi bi-pencil"></i> Edit
+											</td>
+											  </a>
 											
-											<%-- <td  align="center"><a class="btn btn-link text-danger text-gradient px-3 mb-0"
-												href="deleteexpense/<%=eb.getExpenseId()%>"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</td> --%>
+											 <td  align="center"><a class="btn btn-link text-danger text-gradient px-3 mb-0"
+												href="deleteexpense/<%=eb.getExpenseId()%>"><i class="bi bi-trash text-danger"></i>Delete</td>
 										</tr>
 										<%
 										}
