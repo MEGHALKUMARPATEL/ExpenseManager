@@ -55,6 +55,20 @@
           <span>My Profile</span>
         </a>
       </li>
+      
+        <li class="nav-item">
+        <a class="nav-link " href="listexpenseadmin">
+          <i class="bi bi-grid"></i>
+          <span>All Expense</span>
+        </a>
+      </li>
+      
+        <li class="nav-item">
+        <a class="nav-link " href="listincomeadmin">
+          <i class="bi bi-grid"></i>
+          <span>All Income</span>
+        </a>
+      </li>
  
       
        <li class="nav-item">

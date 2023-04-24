@@ -128,11 +128,17 @@
 											</div>
 										</td>
 										<td><a
-											href="viewcategory?categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-eye"></i>   </a>
+											href="viewcategory?categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-eye"></i> View  </a>
 											|
 											
 										<a
-											href="editcategory?categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-pencil"></i>   </a>
+											href="editcategory?categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-pencil"></i> Edit |
+											
+											  </a>
+											  
+											  <a
+											href="deletecategory/categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-trash text-danger"></i>  Delete </a>
+											
 											
 											</td>
 									</tr>

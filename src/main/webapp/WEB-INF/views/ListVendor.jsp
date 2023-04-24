@@ -74,7 +74,7 @@
 
 	<main id="main" class="main">
 	<div class="pagetitle">
-		<h1>Category</h1>
+		<h1>Vendor</h1>
 		<nav>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
@@ -106,7 +106,7 @@
 										<tr>
 											<th>VendorId</th>
 											<th>VendorName</th>
-											<th>Deleted?</th>
+											<<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -118,9 +118,30 @@
 											<td><%=cb.getVendorId()%></td>
 											<td><%=cb.getVendorName()%></td>
 											<td><%=cb.getDeleted()%></td>
-											<td><a href="deletevendor/<%=cb.getVendorId()%>">Delete</a>
-												</td>
-										</tr>
+											<div class="form-check form-switch">
+
+
+												<input class="form-check-input" onclick="changeStatus(<%=cb.getVendorId()%>,<%=cb.getDeleted() %>)" type="checkbox"
+													id="flexSwitchCheckChecked"
+													<%=!cb.getDeleted() ? "checked" : ""%>>
+
+											</div>
+										</td>
+										<td><a
+											href="viewcategory?categoryId=<%=cb.getVendorId()%>"><i class="bi bi-eye"></i> View  </a>
+											|
+											
+										<a
+											href="editcategory?categoryId=<%=cb.getVendorId()%>"><i class="bi bi-pencil"></i> Edit |
+											
+											  </a>
+											  
+											  <a
+											href="deletecategory/categoryId=<%=cb.getVendorId()%>"><i class="bi bi-trash text-danger"></i>  Delete </a>
+											
+											
+											</td>
+									</tr>
 
 										<%
 											}

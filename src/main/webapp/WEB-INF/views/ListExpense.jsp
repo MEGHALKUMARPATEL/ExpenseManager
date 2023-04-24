@@ -118,14 +118,9 @@
 									<thead>
 										<tr>
 											<th class="formheadcss">Title</th>
-											<th class="formheadcss">Category</th>
-											<th class="formheadcss">SubCategory</th>
-											<th class="formheadcss">Vendor</th>
-											<th class="formheadcss">AccountType</th>
-											<th class="formheadcss">Status</th>
 											<th class="formheadcss">Amount</th>
 											<th class="formheadcss">Date</th>
-											<th class="formheadcss">Description</th>
+											<th class="formheadcss">View</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -134,14 +129,11 @@
 										%>
 										<tr>
 											<td class="formcss" align="center" ><%=eb.getTitle()%></td>
-											<td class="formcss" align="center" ><%=eb.getCategoryName()%></td>
-											<td class="formcss" align="center"><%=eb.getSubcategoryName()%></td>
-											<td class="formcss" align="center"><%=eb.getVendorName()%></td>
-											<td class="formcss" align="center"><%=eb.getAccountTypeName()%></td>
-											<td class="formcss" align="center"><%=eb.getStatusName()%></td>
 											<td class="formcss" align="center"><%=eb.getAmount()%></td>
 											<td class="formcss" align="center"><%=eb.getDate()%></td>
-											<td class="formcss" align="center"><%=eb.getDescription()%></td>
+											<td  align="center"><a class="btn btn-link text-gradient px-3 mb-0"
+												href="viewexpense?expenseId=<%=eb.getExpenseId()%>"><i class="bi bi-eye"></i> View</td>
+											
 											<%-- <td  align="center"><a class="btn btn-link text-danger text-gradient px-3 mb-0"
 												href="deleteexpense/<%=eb.getExpenseId()%>"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</td> --%>
 										</tr>

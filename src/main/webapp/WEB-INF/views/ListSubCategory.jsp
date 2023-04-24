@@ -120,9 +120,10 @@
 										<td><%=sb.getSubCategoryName()%></td>
 										<td><%=sb.getCategoryName()%>
 										<td>
-										<a href="deletesubcategory/<%=sb.getSubCategoryId()%>"><i class="bi bi-trash text-danger"></i> </a>
-										<a href="editsubcategory?subCategoryId=<%=sb.getSubCategoryId() %>"><i class="bi bi-pencil text-primary"></i></a>  
 										
+										
+										<a href="editsubcategory?subCategoryId=<%=sb.getSubCategoryId() %>"><i class="bi bi-pencil text-primary"></i> Edit</a> | 
+										<a href="deletesubcategory/<%=sb.getSubCategoryId()%>"><i class="bi bi-trash text-danger"></i> Delete</a>
 										</td>
 									</tr>
 									<%

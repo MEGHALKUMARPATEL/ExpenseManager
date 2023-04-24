@@ -2,10 +2,15 @@ package com.dao;
 
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.bean.CategoryChartBean;
+import com.bean.ExpenseChartBean;
 
 @Repository
 public class HomePageDao {
@@ -120,6 +125,19 @@ public class HomePageDao {
 		}
 		return sumExpenseYearly;
 	}
+	 
+	 public List<ExpenseChartBean> getExpenseStats(int userId) {
+			String selectQuery = "select monthname(date) as month, sum(amount) as expenseAmount from expense where userId = ? and year(date) like ? group by monthname(date),month(date) order by month(date)";
+			LocalDate today = LocalDate.now();
+			Integer year = today.getYear();
+			
+			return stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class), new Object[] {userId,year});
+		}
+
+		public List<CategoryChartBean> getCategoryStats(int userId) {
+			String selectQuery = " SELECT c.categoryName, COUNT(*) AS categoryCount  FROM category c  JOIN expense e ON e.categoryId = c.categoryId where userId =? GROUP BY c.categoryName ORDER BY c.categoryName";
+			return stmt.query(selectQuery, new BeanPropertyRowMapper<CategoryChartBean>(CategoryChartBean.class), new Object[] {userId});
+		}
 
 	
 

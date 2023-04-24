@@ -1,4 +1,8 @@
- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@page import="com.bean.CategoryChartBean"%>
+<%@page import="com.bean.IncomeChartBean"%>
+<%@page import="com.bean.ExpenseChartBean"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!-- <!DOCTYPE html>
 <html>
@@ -54,7 +58,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Mar 09 2023 with Bootstrap v5.2.3
@@ -488,7 +492,588 @@
 						
 						<!-- widgets
 
- -->             
+ -->    
+ 
+ 
+ 
+<%--  <div class="col-12">
+						<div class="card">
+
+
+							<div class="card-body">
+								
+
+								<%
+									List<ExpenseChartBean> expenseChartData = (List<ExpenseChartBean>) request.getAttribute("expenseChartDataUser");
+									List<CategoryChartBean> categoryChartData = (List<CategoryChartBean>) request.getAttribute("categoryChartDataUser");	
+								/* List<IncomeChartBean> incomeChartData = (List<IncomeChartBean>) request.getAttribute("incomeChartDataUser"); */ 
+								%>
+								<!-- Line Chart -->
+								<div>
+										<h5 class="card-title">Category-Expenses</h5>
+										<div class="col-4">
+											<canvas id="categorychartUser" class="chartjs-render-monitor"></canvas>
+										</div>
+										<br><br>
+										<h5 class="card-title">Expense-Monthly</h5>
+									<canvas id="expensechartUser"></canvas>
+								</div>
+								
+								
+					<script>
+
+					 BGcolorArray= [
+						    'rgba(75, 192, 192, 0.4)',
+					        'rgba(153, 102, 255, 0.4)',
+					        'rgba(255, 159, 64, 0.4)',
+						    'rgba(255, 99, 132, 0.4)',
+					        'rgba(54, 162, 235, 0.4)',
+					        'rgba(255, 206, 86, 0.4)'
+					            
+					      ]
+					 
+					  bordderArray = [
+						  'rgba(75, 192, 192, 1)',
+					        'rgba(153, 102, 255, 1)',
+					        'rgba(255, 159, 64, 1)',
+						    'rgba(255, 99, 132, 1)',
+					        'rgba(54, 162, 235, 1)',
+					        'rgba(255, 206, 86, 1)'
+					        ]
+					 
+						bgColor = [];
+						borderColor = [];
+						
+						<% for(int i = 0; i<categoryChartData.size(); i++){%>
+							bgColor.push(BGcolorArray[<%=i%>]);
+						<%}%>
+						
+						<% for(int i=0; i<categoryChartData.size(); i++){ %>
+							borderColor.push(bordderArray[<%=i%>]);
+						<%}%>
+						
+					
+						const ctx2 = document.getElementById('categorychartUser'); 
+						
+						new Chart(
+								ctx2,
+								{
+									type : 'doughnut',
+									data : {
+										labels : [ 
+											 <%for (CategoryChartBean e : categoryChartData) {%>
+											 '<%=e.getCategoryName()%>',
+												<%}%> ],
+										datasets : [ {
+											label : '# of Category Count',
+											data : [
+												 <%for (CategoryChartBean e : categoryChartData) {%>
+														<%=e.getCategoryCount()%>,
+												<%}%> 
+												],
+												 backgroundColor: bgColor,
+											       borderColor: borderColor,
+											       borderWidth: 1
+										} ]
+									},
+									options : {
+										scales : {
+											y : {
+												beginAtZero : true
+											}
+										}
+									}
+								});
+						
+					</script>
+								
+								
+								
+								
+							<script type="text/javascript">
+							 
+							 BGcolorArray= [
+								    'rgba(75, 192, 192, 0.4)',
+							        'rgba(153, 102, 255, 0.4)',
+							        'rgba(255, 159, 64, 0.4)',
+								    'rgba(255, 99, 132, 0.4)',
+							        'rgba(54, 162, 235, 0.4)',
+							        'rgba(255, 206, 86, 0.4)'
+							            
+							      ]
+							 
+							  bordderArray = [
+								  'rgba(75, 192, 192, 1)',
+							        'rgba(153, 102, 255, 1)',
+							        'rgba(255, 159, 64, 1)',
+								    'rgba(255, 99, 132, 1)',
+							        'rgba(54, 162, 235, 1)',
+							        'rgba(255, 206, 86, 1)'
+							        ]
+							 
+								bgColor = [];
+								borderColor = [];
+								
+								<% for(int i = 0; i<categoryData.size(); i++){%>
+									bgColor.push(BGcolorArray[<%=i%>]);
+								<%}%>
+								
+								<% for(int i=0; i<categoryChartData.size(); i++){ %>
+									borderColor.push(bordderArray[<%=i%>]);
+								<%}%>
+ 
+							 const ctx2 = document.getElementById('categorychartUser');
+							
+							 new Chart(ctx2, {
+							   type: 'doughnut',
+							   data: {
+							     labels: [<%for(CategoryChartBean cb : categoryChartData){%>
+							       '<%=cb.getCategoryName()%>',
+							     <%}%>
+							     ],
+							     datasets: [{
+							       label: '# Category',
+							       data: [ <%for(CategoryChartBean cb : categoryChartData){%>
+							         <%=cb.getCategoryCount()%>,
+							       <%}%> ],
+							       backgroundColor: bgColor,
+							       borderColor: borderColor,
+							       borderWidth: 1
+							     }]
+							   },
+							   options: {
+							     cutout: '50%',
+							     plugins: {
+							       title: {
+							         display: true,
+							         text: 'Category wise chart'
+							       },
+							       legend: {
+							         position: 'bottom'
+							       }
+							     }
+							   }
+							 });  
+ 
+ 						</script>
+								
+								
+								
+								<div>
+									<canvas id="pieChart" class="chartjs-render-monitor"></canvas>
+								</div>
+							<script type="text/javascript">
+							 
+							 BGcolorArray= [
+								  'rgba(75, 192, 192, 0.4)',
+							        'rgba(153, 102, 255, 0.4)',
+							        'rgba(255, 159, 64, 0.4)',
+								    'rgba(255, 99, 132, 0.4)',
+							        'rgba(54, 162, 235, 0.4)',
+							        'rgba(255, 206, 86, 0.4)'
+							            
+							      ]
+							 
+							  bordderArray = [
+								  'rgba(75, 192, 192, 1)',
+							        'rgba(153, 102, 255, 1)',
+							        'rgba(255, 159, 64, 1)',
+								    'rgba(255, 99, 132, 1)',
+							        'rgba(54, 162, 235, 1)',
+							        'rgba(255, 206, 86, 1)'
+							        ]
+							 
+								bgColor = [];
+								borderColor = [];
+								
+								<% for(int i = 0; i<pieStatus.size(); i++){%>
+									bgColor.push(BGcolorArray[<%=i%>]);
+								<%}%>
+								
+								<% for(int i=0; i<pieStatus.size(); i++){ %>
+									borderColor.push(bordderArray[<%=i%>]);
+								<%}%>
+ 
+							 const ctx3 = document.getElementById('pieChart');
+							
+							 new Chart(ctx3, {
+							   type: 'doughnut',
+							   data: {
+							     labels: [<%for(ChartExpenseBean db : pieStatus){%>
+							       '<%=db.getStatus()%>',
+							     <%}%>
+							     ],
+							     datasets: [{
+							       label: '# Transaction Status',
+							       data: [ <%for(ChartExpenseBean db : pieStatus){%>
+							         <%=db.getTransaction()%>,
+							       <%}%> ],
+							       backgroundColor: bgColor,
+							       borderColor: borderColor,
+							       borderWidth: 1
+							     }]
+							   },
+							   options: {
+							     cutout: '50%',
+							     plugins: {
+							       title: {
+							         display: true,
+							         text: 'Donut Chart'
+							       },
+							       legend: {
+							         position: 'bottom'
+							       }
+							     }
+							   }
+							 });  
+ 
+ 						</script>
+
+
+								
+								
+
+					<script>
+
+					
+						const ctx3 = document.getElementById('expensechartUser');
+						new Chart(
+								ctx3,
+								{
+									type : 'bar',
+									data : {
+										labels : [ 
+											 <%for (ExpenseChartBean e : expenseChartData) {%>
+											 '<%=e.getMonth()%>',
+												<%}%> ],
+										datasets : [ {
+											label : '# of ExpenseAmount',
+											data : [
+												 <%for (ExpenseChartBean e : expenseChartData) {%>
+														<%=e.getExpenseAmount()%>,
+												<%}%> 
+												],
+												backgroundColor: [
+													'rgba(255,159,64,0.5)'
+												],
+												borderColor:[
+													'black'
+												],
+												
+											borderWidth : 1
+										} ]
+									},
+									options : {
+										scales : {
+											y : {
+												beginAtZero : true
+											}
+										}
+									}
+								});
+					</script>
+					
+
+							</div>
+
+						</div>
+					</div> --%><div class="col-12">
+						<div class="card">
+
+
+							<div class="card-body">
+								
+
+								<%
+									List<ExpenseChartBean> expenseChartData = (List<ExpenseChartBean>) request.getAttribute("expenseChartDataUser");
+									List<CategoryChartBean> categoryChartData = (List<CategoryChartBean>) request.getAttribute("categoryChartDataUser");	
+								/* List<IncomeChartBean> incomeChartData = (List<IncomeChartBean>) request.getAttribute("incomeChartDataUser"); */ 
+								%>
+								<!-- Line Chart -->
+								<div>
+										<h5 class="card-title">Category-Expenses</h5>
+										<div class="col-4">
+											<canvas id="categorychartUser" class="chartjs-render-monitor"></canvas>
+										</div>
+										<br><br>
+										<h5 class="card-title">Expense-Monthly</h5>
+									<canvas id="expensechartUser"></canvas>
+								</div>
+								
+								
+					<script>
+
+					 BGcolorArray= [
+						    'rgba(75, 192, 192, 0.4)',
+					        'rgba(153, 102, 255, 0.4)',
+					        'rgba(255, 159, 64, 0.4)',
+						    'rgba(255, 99, 132, 0.4)',
+					        'rgba(54, 162, 235, 0.4)',
+					        'rgba(255, 206, 86, 0.4)'
+					            
+					      ]
+					 
+					  bordderArray = [
+						  'rgba(75, 192, 192, 1)',
+					        'rgba(153, 102, 255, 1)',
+					        'rgba(255, 159, 64, 1)',
+						    'rgba(255, 99, 132, 1)',
+					        'rgba(54, 162, 235, 1)',
+					        'rgba(255, 206, 86, 1)'
+					        ]
+					 
+						bgColor = [];
+						borderColor = [];
+						
+						<% for(int i = 0; i<categoryChartData.size(); i++){%>
+							bgColor.push(BGcolorArray[<%=i%>]);
+						<%}%>
+						
+						<% for(int i=0; i<categoryChartData.size(); i++){ %>
+							borderColor.push(bordderArray[<%=i%>]);
+						<%}%>
+						
+					
+						const ctx2 = document.getElementById('categorychartUser'); 
+						
+						new Chart(
+								ctx2,
+								{
+									type : 'doughnut',
+									data : {
+										labels : [ 
+											 <%for (CategoryChartBean e : categoryChartData) {%>
+											 '<%=e.getCategoryName()%>',
+												<%}%> ],
+										datasets : [ {
+											label : '# of Category Count',
+											data : [
+												 <%for (CategoryChartBean e : categoryChartData) {%>
+														<%=e.getCategoryCount()%>,
+												<%}%> 
+												],
+												 backgroundColor: bgColor,
+											       borderColor: borderColor,
+											       borderWidth: 1
+										} ]
+									},
+									options : {
+										scales : {
+											y : {
+												beginAtZero : true
+											}
+										}
+									}
+								});
+						
+					</script>
+								
+								
+								
+								
+						<%-- 	<script type="text/javascript">
+							 
+							 BGcolorArray= [
+								    'rgba(75, 192, 192, 0.4)',
+							        'rgba(153, 102, 255, 0.4)',
+							        'rgba(255, 159, 64, 0.4)',
+								    'rgba(255, 99, 132, 0.4)',
+							        'rgba(54, 162, 235, 0.4)',
+							        'rgba(255, 206, 86, 0.4)'
+							            
+							      ]
+							 
+							  bordderArray = [
+								  'rgba(75, 192, 192, 1)',
+							        'rgba(153, 102, 255, 1)',
+							        'rgba(255, 159, 64, 1)',
+								    'rgba(255, 99, 132, 1)',
+							        'rgba(54, 162, 235, 1)',
+							        'rgba(255, 206, 86, 1)'
+							        ]
+							 
+								bgColor = [];
+								borderColor = [];
+								
+								<% for(int i = 0; i<categoryData.size(); i++){%>
+									bgColor.push(BGcolorArray[<%=i%>]);
+								<%}%>
+								
+								<% for(int i=0; i<categoryChartData.size(); i++){ %>
+									borderColor.push(bordderArray[<%=i%>]);
+								<%}%>
+ 
+							 const ctx2 = document.getElementById('categorychartUser');
+							
+							 new Chart(ctx2, {
+							   type: 'doughnut',
+							   data: {
+							     labels: [<%for(CategoryChartBean cb : categoryChartData){%>
+							       '<%=cb.getCategoryName()%>',
+							     <%}%>
+							     ],
+							     datasets: [{
+							       label: '# Category',
+							       data: [ <%for(CategoryChartBean cb : categoryChartData){%>
+							         <%=cb.getCategoryCount()%>,
+							       <%}%> ],
+							       backgroundColor: bgColor,
+							       borderColor: borderColor,
+							       borderWidth: 1
+							     }]
+							   },
+							   options: {
+							     cutout: '50%',
+							     plugins: {
+							       title: {
+							         display: true,
+							         text: 'Category wise chart'
+							       },
+							       legend: {
+							         position: 'bottom'
+							       }
+							     }
+							   }
+							 });  
+ 
+ 						</script> --%>
+								
+								
+								
+								<%-- <div>
+									<canvas id="pieChart" class="chartjs-render-monitor"></canvas>
+								</div>
+							<script type="text/javascript">
+							 
+							 BGcolorArray= [
+								  'rgba(75, 192, 192, 0.4)',
+							        'rgba(153, 102, 255, 0.4)',
+							        'rgba(255, 159, 64, 0.4)',
+								    'rgba(255, 99, 132, 0.4)',
+							        'rgba(54, 162, 235, 0.4)',
+							        'rgba(255, 206, 86, 0.4)'
+							            
+							      ]
+							 
+							  bordderArray = [
+								  'rgba(75, 192, 192, 1)',
+							        'rgba(153, 102, 255, 1)',
+							        'rgba(255, 159, 64, 1)',
+								    'rgba(255, 99, 132, 1)',
+							        'rgba(54, 162, 235, 1)',
+							        'rgba(255, 206, 86, 1)'
+							        ]
+							 
+								bgColor = [];
+								borderColor = [];
+								
+								<% for(int i = 0; i<pieStatus.size(); i++){%>
+									bgColor.push(BGcolorArray[<%=i%>]);
+								<%}%>
+								
+								<% for(int i=0; i<pieStatus.size(); i++){ %>
+									borderColor.push(bordderArray[<%=i%>]);
+								<%}%>
+ 
+							 const ctx3 = document.getElementById('pieChart');
+							
+							 new Chart(ctx3, {
+							   type: 'doughnut',
+							   data: {
+							     labels: [<%for(ChartExpenseBean db : pieStatus){%>
+							       '<%=db.getStatus()%>',
+							     <%}%>
+							     ],
+							     datasets: [{
+							       label: '# Transaction Status',
+							       data: [ <%for(ChartExpenseBean db : pieStatus){%>
+							         <%=db.getTransaction()%>,
+							       <%}%> ],
+							       backgroundColor: bgColor,
+							       borderColor: borderColor,
+							       borderWidth: 1
+							     }]
+							   },
+							   options: {
+							     cutout: '50%',
+							     plugins: {
+							       title: {
+							         display: true,
+							         text: 'Donut Chart'
+							       },
+							       legend: {
+							         position: 'bottom'
+							       }
+							     }
+							   }
+							 });  
+ 
+ 						</script>
+
+ --%>
+								
+								
+
+					<script>
+
+					
+						const ctx3 = document.getElementById('expensechartUser');
+						new Chart(
+								ctx3,
+								{
+									type : 'bar',
+									data : {
+										labels : [ 
+											 <%for (ExpenseChartBean e : expenseChartData) {%>
+											 '<%=e.getMonth()%>',
+												<%}%> ],
+										datasets : [ {
+											label : '# of ExpenseAmount',
+											data : [
+												 <%for (ExpenseChartBean e : expenseChartData) {%>
+														<%=e.getExpenseAmount()%>,
+												<%}%> 
+												],
+												backgroundColor: [
+													'rgba(255,159,64,0.5)'
+												],
+												borderColor:[
+													'black'
+												],
+												
+											borderWidth : 1
+										} ]
+									},
+									options : {
+										scales : {
+											y : {
+												beginAtZero : true
+											}
+										}
+									}
+								});
+					</script>
+					
+
+							</div>
+
+						</div>
+					</div>
+ 
+ 
+ 
+ 
+  
+		<jsp:include page="AdminFooter.jsp"></jsp:include>
+		<!--End Footer -->
+    </div>
+  <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;">
+  		</div>
+  	</div>
+  	
+  	  	</div>
+  </main>
+<!-- main content close -->         
  
  
  

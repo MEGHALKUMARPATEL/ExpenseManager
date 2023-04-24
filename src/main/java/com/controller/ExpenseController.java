@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.AccountTypeBean;
 import com.bean.CategoryBean;
@@ -113,6 +114,17 @@ public class ExpenseController {
 		System.out.println(expenselist);
 		model.addAttribute("expenselist",expenselist);
 		return "ListExpense";
+	}
+	
+	@GetMapping("/viewexpense")
+	public String viewExpense(@RequestParam("expenseId") Integer expenseId, Model model) {
+		System.out.println("ExpenseId by controller"+expenseId);
+		ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
+		model.addAttribute("expenseBean",expenseBean);
+		System.out.println("ExpenseId by controller"+expenseId);
+//		System.out.println(expenseBean.getExpenseImg().getOriginalFilename());
+//		System.out.println(expenseBean.getImageUrl());
+		return "ViewExpense";
 	}
 	
 	/*

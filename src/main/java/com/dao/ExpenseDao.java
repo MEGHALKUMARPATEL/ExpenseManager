@@ -37,9 +37,23 @@ public class ExpenseDao {
 		}
 		
 		public List<ExpenseBean> getAllExpense(Integer userId) {
-			String selectQuery = "select e.title,e.amount,e.date,e.description, c.categoryName, sc.subCategoryName, v.vendorName, a.accountTypeName, s.statusName from expense e, category c, subcategory sc, vendor v, accounttype a, status s where e.categoryId=c.categoryId and e.subCategoryId= sc.subCategoryId and e.vendorId= v.vendorId and e.accountTypeId= a.accountTypeId and e.statusId= s.statusId and userId=? ";
+			String selectQuery = "select e.expenseId, e.title,e.amount,e.date,e.description, c.categoryName, sc.subCategoryName, v.vendorName, a.accountTypeName, s.statusName from expense e, category c, subcategory sc, vendor v, accounttype a, status s where e.categoryId=c.categoryId and e.subCategoryId= sc.subCategoryId and e.vendorId= v.vendorId and e.accountTypeId= a.accountTypeId and e.statusId= s.statusId and userId=? ";
 			List<ExpenseBean> expenselist = stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class),new Object[] {userId});
 			return expenselist;
+		}
+		
+		public ExpenseBean getExpenseById(Integer expenseId) {
+			ExpenseBean expenseBean = null;
+				
+				try {
+						expenseBean = stmt.queryForObject("select e.expenseId,e.categoryId,e.subCategoryId,e.vendorId,e.statusId,e.accountTypeId, e.imageUrl, e.title, e.amount,e.date,e.description, c.categoryName, sc.subCategoryName, v.vendorName, a.accountTypeName, s.statusName from expense e, category c, subcategory sc, vendor v, accounttype a, status s where e.categoryId=c.categoryId and e.subCategoryId= sc.subCategoryId and e.vendorId= v.vendorId and e.accountTypeId= a.accountTypeId and e.statusId= s.statusId and expenseId = ?",
+								new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[] {expenseId });
+					
+				} catch (Exception e) {
+						System.out.println("expenseDao :: getExpenseById()");
+						System.out.println(e.getMessage());
+				}
+			return expenseBean;
 		}
 		
 
