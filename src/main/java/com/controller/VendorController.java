@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.StatusBean;
 import com.bean.VendorBean;
@@ -39,22 +40,24 @@ public class VendorController {
 		return "ListVendor";
 	}
 	
-	@GetMapping("/deletevendor/{vendorId}")
-	public String deleteVendor(@PathVariable("vendorId") Integer vendorId) {
+	@GetMapping("/deletevendor")
+	public String deleteVendor(@RequestParam("vendorId") Integer vendorId) {
 		vendorDao.deleteVendor(vendorId);
+		System.out.println(vendorId);
 		return "redirect:/listvendor";
+
 	}
 	
-	/*
-	 * @GetMapping("/editvendor") public String editVendor(@RequestParam("vendorId")
-	 * Integer vendorId, Model model) { VendorBean vendorBean =
-	 * vendorDao.getVendorById(vendorId);
-	 * System.out.println(vendorBean.getVendorId());
-	 * model.addAttribute("vendorBean",vendorBean); return "EditVendor"; }
-	 * 
-	 * @PostMapping("/updatevendor") public String updateVendor(VendorBean
-	 * vendorBean) { vendorDao.updateVendor(vendorBean);
-	 * 
-	 * return "redirect:/listvendor"; }
-	 */
+	
+	  @GetMapping("/editvendor") public String editVendor(@RequestParam("vendorId")
+	  Integer vendorId, Model model) { VendorBean vendorBean =
+	  vendorDao.getVendorById(vendorId);
+	  System.out.println(vendorBean.getVendorId());
+	  model.addAttribute("vendorBean",vendorBean); return "EditVendor"; }
+	  
+	  @PostMapping("/updatevendor") public String updateVendor(VendorBean
+	  vendorBean) { vendorDao.updateVendor(vendorBean);
+	  
+	  return "redirect:/listvendor"; }
+	 
 }

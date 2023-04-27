@@ -36,10 +36,10 @@ public class ExpenseDao {
 			stmt.update(insertQuery, expenseBean.getTitle(),expenseBean.getCategoryId(),expenseBean.getSubCategoryId(),expenseBean.getVendorId(),expenseBean.getAccountTypeId(),expenseBean.getStatusId(),expenseBean.getUserId(),expenseBean.getAmount(),expenseBean.getDate(),expenseBean.getDescription());
 		}
 		
-		public List<ExpenseBean> getAllExpense(Integer userId) {
-			String selectQuery = "select e.expenseId, e.title,e.amount,e.date,e.description, c.categoryName, sc.subCategoryName, v.vendorName, a.accountTypeName, s.statusName from expense e, category c, subcategory sc, vendor v, accounttype a, status s where e.categoryId=c.categoryId and e.subCategoryId= sc.subCategoryId and e.vendorId= v.vendorId and e.accountTypeId= a.accountTypeId and e.statusId= s.statusId and userId=? ";
-			List<ExpenseBean> expenselist = stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class),new Object[] {userId});
-			return expenselist;
+		public List<ExpenseBean> getAllExpense() {
+			String selectQuery = "select e.expenseId, e.title,e.amount,e.date,e.description, c.categoryName, sc.subCategoryName, v.vendorName, a.accountTypeName, s.statusName from expense e, category c, subcategory sc, vendor v, accounttype a, status s where e.categoryId=c.categoryId and e.subCategoryId= sc.subCategoryId and e.vendorId= v.vendorId and e.accountTypeId= a.accountTypeId and e.statusId= s.statusId order by expenseId desc ";
+			List<ExpenseBean> expenseList = stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class),new Object[] {} );
+			return expenseList;
 		}
 		
 		public ExpenseBean getExpenseById(Integer expenseId) {
@@ -54,6 +54,24 @@ public class ExpenseDao {
 						System.out.println(e.getMessage());
 				}
 			return expenseBean;
+		}
+		
+		public List<ExpenseBean> getExpenseByUserId(Integer userId) {
+			String selectQuery = "select e.expenseId, e.title,e.amount,e.date,e.description, c.categoryName, sc.subCategoryName, v.vendorName, a.accountTypeName, s.statusName from expense e, category c, subcategory sc, vendor v, accounttype a, status s where e.categoryId=c.categoryId and e.subCategoryId= sc.subCategoryId and e.vendorId= v.vendorId and e.accountTypeId= a.accountTypeId and e.statusId= s.statusId and userId=? order by expenseId desc; ";
+			List<ExpenseBean> expenselist = stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class),new Object[] {userId});
+			return expenselist;
+		}
+		
+		public void addExpenseImg(ExpenseBean expenseBean) {
+			stmt.update("update expense set imageUrl = ? where expenseId = ?", expenseBean.getImageUrl(),expenseBean.getExpenseId());
+			System.out.println("Expense Photo updated");
+			
+		}
+
+		public void updateExpense(ExpenseBean expenseBean) {
+			String updateQuery = "update expense set title = ?, categoryId = ?, subCategoryId = ?, vendorId = ?, accountTypeId = ?, statusId = ?, amount = ?, date = ?, description = ? where expenseId = ?";
+			stmt.update(updateQuery, expenseBean.getTitle(),expenseBean.getCategoryId(),expenseBean.getSubCategoryId(),expenseBean.getVendorId(),expenseBean.getAccountTypeId(),expenseBean.getStatusId(),expenseBean.getAmount(),expenseBean.getDate(),expenseBean.getDescription(),expenseBean.getExpenseId());
+			
 		}
 		
 

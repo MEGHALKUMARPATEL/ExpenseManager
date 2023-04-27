@@ -1,13 +1,14 @@
 package com.bean;
 
 public class VendorBean {
-	private int vendorId;
+	private Integer vendorId;
 	private String vendorName;
 	private boolean deleted;
-	public int getVendorId() {
+	
+	public Integer getVendorId() {
 		return vendorId;
 	}
-	public void setVendorId(int vendorId) {
+	public void setVendorId(Integer vendorId) {
 		this.vendorId = vendorId;
 	}
 	public String getVendorName() {

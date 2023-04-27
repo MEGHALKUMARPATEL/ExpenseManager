@@ -132,14 +132,11 @@
 											|
 											
 										<a
-											href="editcategory?categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-pencil"></i> Edit |
+											href="editcategory?categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-pencil"></i> Edit 
 											
 											  </a>
 											  
-											  <a
-											href="deletecategory/categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-trash text-danger"></i>  Delete </a>
-											
-											
+											 
 											</td>
 									</tr>
 

@@ -106,7 +106,6 @@
 										<tr>
 											<th>VendorId</th>
 											<th>VendorName</th>
-											<<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -117,27 +116,20 @@
 										<tr>
 											<td><%=cb.getVendorId()%></td>
 											<td><%=cb.getVendorName()%></td>
-											<td><%=cb.getDeleted()%></td>
-											<div class="form-check form-switch">
+											
 
-
-												<input class="form-check-input" onclick="changeStatus(<%=cb.getVendorId()%>,<%=cb.getDeleted() %>)" type="checkbox"
-													id="flexSwitchCheckChecked"
-													<%=!cb.getDeleted() ? "checked" : ""%>>
 
 											</div>
 										</td>
-										<td><a
-											href="viewcategory?categoryId=<%=cb.getVendorId()%>"><i class="bi bi-eye"></i> View  </a>
-											|
+										<td>
 											
 										<a
-											href="editcategory?categoryId=<%=cb.getVendorId()%>"><i class="bi bi-pencil"></i> Edit |
+											href="editvendor?vendorId=<%=cb.getVendorId()%>"><i class="bi bi-pencil"></i> Edit |
 											
 											  </a>
 											  
 											  <a
-											href="deletecategory/categoryId=<%=cb.getVendorId()%>"><i class="bi bi-trash text-danger"></i>  Delete </a>
+											href="deletevendor?vendorId=<%=cb.getVendorId()%>"><i class="bi bi-trash text-danger"></i>  Delete </a>
 											
 											
 											</td>

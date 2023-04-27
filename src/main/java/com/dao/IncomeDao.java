@@ -21,14 +21,12 @@ public class IncomeDao {
 			stmt.update(insertQuery, incomeBean.getTitle(),incomeBean.getDate(),incomeBean.getUserId(),incomeBean.getAccountTypeId(),incomeBean.getStatusId(),incomeBean.getDescription(),incomeBean.getAmount());
 		}
 		
-		/*
-		 * public List<IncomeBean> getAllIncome(Integer userId) { String selectQuery =
-		 * "select * from income where userId = ? "; List<IncomeBean> incomelist =
-		 * stmt.query(selectQuery, new
-		 * BeanPropertyRowMapper<IncomeBean>(IncomeBean.class),new Object[] {userId});
-		 * return incomelist; }
-		 */
-		public List<IncomeBean> getAllIncome(Integer userId) {
+		public List<IncomeBean> getAllInocmes() {
+			String selectQuery = "select i.incomeId,i.title, i.amount,i.date,i.description, a.accountTypeName, s.statusName from income i, accounttype a, status s where i.accountTypeId=a.accountTypeId and s.statusId= i.statusId order by incomeId";
+			List<IncomeBean> incomelist = stmt.query(selectQuery, new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class));
+			return incomelist;
+		}
+		public List<IncomeBean> getIncomeByUserId(Integer userId) {
 			String selectQuery = "select i.title, i.amount,i.date,i.description, a.accountTypeName, s.statusName from income i, accounttype a, status s where i.accountTypeId=a.accountTypeId and s.statusId= i.statusId and userId = ?";
 			List<IncomeBean> incomelist = stmt.query(selectQuery, new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class),new Object[] {userId});
 			return incomelist;
@@ -36,21 +34,18 @@ public class IncomeDao {
 		
 	
 
-		/*
-		 * public IncomeBean getIncomeById(Integer incomeId) { IncomeBean incomeBean =
-		 * null;
-		 * 
-		 * try { incomeBean = stmt.
-		 * queryForObject("select i.incomeId, i.title, i.amount,i.date,i.description, a.accountTypeName, s.statusName from income i, accounttype a, status s where i.accountTypeId=a.accountTypeId and s.statusId= i.statusId and incomeId = ?"
-		 * , new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class), new Object[]
-		 * {incomeId});
-		 * 
-		 * } catch (Exception e) { System.out.println("incomeDao :: getIncomeById()");
-		 * System.out.println(e.getMessage()); } return incomeBean; }
-		 * 
-		 * public void updateIncome(IncomeBean incomeBean) { // TODO Auto-generated
-		 * method stub
-		 * 
-		 * }
-		 */
+		
+		public IncomeBean getIncomeById(Integer incomeId) {
+			IncomeBean incomeBean = null;
+				
+				try {
+					incomeBean = stmt.queryForObject("select i.incomeId, i.title, i.amount,i.date,i.description, a.accountTypeName, s.statusName from income i, accounttype a, status s where i.accountTypeId=a.accountTypeId and s.statusId= i.statusId and incomeId = ?",
+								new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class), new Object[] {incomeId});
+					
+				} catch (Exception e) {
+						System.out.println("incomeDao :: getIncomeById()");
+						System.out.println(e.getMessage());
+				}
+			return incomeBean;
+		}
 }

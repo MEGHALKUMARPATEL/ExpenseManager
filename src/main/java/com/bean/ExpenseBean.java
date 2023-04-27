@@ -1,5 +1,7 @@
 package com.bean;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ExpenseBean {
 	private int expenseId;
 	private int categoryId;
@@ -17,10 +19,24 @@ public class ExpenseBean {
 	private String vendorName;
 	private String accountTypeName;
 	private String statusName;
+	private MultipartFile expenseImg;
+	private String imageUrl;
 	
 	
 	
 	
+	public MultipartFile getExpenseImg() {
+		return expenseImg;
+	}
+	public void setExpenseImg(MultipartFile expenseImg) {
+		this.expenseImg = expenseImg;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 	public int getExpenseId() {
 		return expenseId;
 	}

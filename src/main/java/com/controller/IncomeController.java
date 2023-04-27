@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.AccountTypeBean;
 import com.bean.ExpenseBean;
@@ -84,10 +85,25 @@ public class IncomeController {
 			}
 			//pull all expense from db-table
 			incomeBean.setUserId(userId);
-			List<IncomeBean> incomelist = incomeDao.getAllIncome(userId);
+			List<IncomeBean> incomelist = incomeDao.getIncomeByUserId(userId);
 			System.out.println(incomelist);
 			model.addAttribute("incomelist",incomelist);
 			return "ListIncome";
+		}
+		
+		@GetMapping("/listincomeadmin") public String listIncomesAdmin(Model model)
+		  { List<IncomeBean> incomelist = incomeDao.getAllInocmes();
+		  model.addAttribute("incomelist",incomelist);
+		  
+		  return "ListIncomesAdmin"; }
+		
+		@GetMapping("/viewincome")
+		public String viewIncome(@RequestParam("incomeId")Integer incomeId, Model model) {
+			System.out.println(incomeId);
+			IncomeBean incomeBean = incomeDao.getIncomeById(incomeId);
+			System.out.println(incomeBean.getIncomeId());
+			model.addAttribute("incomeBean", incomeBean);
+			return "ViewIncome";
 		}
 		
 		/*
@@ -98,11 +114,7 @@ public class IncomeController {
 		 * System.out.println(incomeBean.getIncomeId());
 		 * model.addAttribute("incomeBean", incomeBean); return "ViewIncome"; }
 		 * 
-		 * @GetMapping("/listincomesadmin") public String listIncomesAdmin(Model model)
-		 * { List<IncomeBean> incomelist = incomeDao.getAllInocmes();
-		 * model.addAttribute("incomelist",incomelist);
 		 * 
-		 * return "ListIncomesAdmin"; }
 		 * 
 		 * @GetMapping("/viewincomes") public String
 		 * viewIncomes(@RequestParam("incomeId") Integer incomeId, Model model) {

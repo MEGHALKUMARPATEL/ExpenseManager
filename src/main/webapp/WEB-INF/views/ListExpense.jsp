@@ -138,7 +138,7 @@
 												href="viewexpense?expenseId=<%=eb.getExpenseId()%>"><i class="bi bi-eye"></i> View</td>
 												
 													<td>	<a
-											href="viewexpense?expenseId=<%=eb.getExpenseId()%>"><i class="bi bi-pencil"></i> Edit
+											href="editexpense?expenseId=<%=eb.getExpenseId()%>"><i class="bi bi-pencil"></i> Edit
 											</td>
 											  </a>
 											
@@ -157,7 +157,7 @@
 
 					</div>
 				</div>
- c
+ 
 			</div>
 		</div>
 	</section>
