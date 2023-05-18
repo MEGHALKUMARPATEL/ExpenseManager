@@ -166,7 +166,7 @@ public class ExpenseController {
 		return "redirect:/viewexpense";
 		
 	}
-	
+//	
 	@GetMapping("/editexpense")
 	public String editExpense(@RequestParam("expenseId") Integer expenseId, Model model) {
 		ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
@@ -193,6 +193,31 @@ public class ExpenseController {
 		
 		return "redirect:/listexpense";
 	}
+	
+//	@GetMapping("/addexpenseimg") public String
+//	  addExpenseImg(@RequestParam("expenseId") Integer expenseId, Model model) {
+//	  ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
+//	  model.addAttribute("expenseBean",expenseBean); return "ExpenseAddImage"; }
+//	  
+//	  @PostMapping("/addexpenseimg") public String addExpenseImg(ExpenseBean
+//	  expenseBean) { System.out.println(expenseBean.getExpenseId());
+//	 System.out.println(expenseBean.getExpenseImg().getOriginalFilename()); try {
+//	  File userDir = new File(
+//	  "C:\\Users\\Hp\\Documents\\workspace-spring-tool-suite-4-4.17.2.RELEASE\\ExpenseManager\\src\\main\\resources\\static\\assets\\expenseimg"
+//	 ,expenseBean.getExpenseId() + ""); if(userDir.exists() == false) {
+//	  userDir.mkdir(); } File file = new File(userDir,
+//	  expenseBean.getExpenseImg().getOriginalFilename());
+//	 FileUtils.writeByteArrayToFile(file, expenseBean.getExpenseImg().getBytes());
+//	  expenseBean.setImageUrl("assets/expenseimg/" + expenseBean.getExpenseId() +
+//	 "/" + expenseBean.getExpenseImg().getOriginalFilename());
+//	  
+// expenseDao.addExpenseImg(expenseBean);
+//	  
+//	 } catch (Exception e) { e.printStackTrace(); }
+//	  
+//	 return "redirect:/viewexpense";
+//	 
+//	  }
 	
 	/*
 	 * @GetMapping("/listexpensesadmin") public String listExpensesAdmin(Model

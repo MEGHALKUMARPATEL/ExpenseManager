@@ -106,7 +106,6 @@
 										<tr>
 											<th>AccountTypeId</th>
 											<th>AccountTypeName</th>
-											<th>Deleted?</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -117,8 +116,8 @@
 										<tr>
 											<td><%=cb.getAccountTypeId()%></td>
 											<td><%=cb.getAccountTypeName()%></td>
-											<td><%=cb.isDeleted()%></td>
-											<td><a href="deleteaccounttype/<%=cb.getAccountTypeId()%>">Delete</a>
+											<td><a href="deleteaccounttype/<%=cb.getAccountTypeId()%>"> <i class="bi bi-trash text-danger"></i>Delete</a>
+
 												</td>
 										</tr>
 

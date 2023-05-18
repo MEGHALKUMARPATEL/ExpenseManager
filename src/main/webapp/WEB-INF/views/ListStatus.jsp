@@ -112,10 +112,9 @@
 									<table class="table datatable datatable-table">
 										<thead>
 											<tr>
-												<th data-sortable="true" style="width: 5.584826132771338%;"><a
-													href="#" class="datatable-sorter">StatusId</a></th>
-												<th data-so"#" class="datatable-sorter">StatusName</a></th>
-												
+												<th>StatusId</th>
+												<th>StatusName</th>
+												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -123,6 +122,9 @@
 	<tr>
 		<td><%=sb.getStatusId() %></td>
 		<td><%=sb.getStatusName() %></td>
+		<td><a href="deletestatus/<%=sb.getStatusId()%>"> <i class="bi bi-trash text-danger"></i>Delete</a>
+
+												</td>
 	</tr>
 	
 											

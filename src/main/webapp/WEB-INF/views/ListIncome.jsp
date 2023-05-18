@@ -110,11 +110,12 @@
 								<table class="table datatable" id="listincome">
 									<thead>
 										<tr>
-										<th>Title</th>
+										    <th>Title</th>
 											<th>Amount</th>
 											<th>Date</th>
 											<th>View Detail</th>
 											<th>Action</th>
+											
 										</tr>
 									</thead>
 									<tbody>
@@ -122,7 +123,6 @@
 											for(IncomeBean ib:incomelist){
 										%>
 											<tr>
-												<td class="formcss" align="center" ><%=ib.getIncomeId()%></td>
 											<td class="formcss" align="center" ><%=ib.getTitle()%></td>
 											<td class="formcss" align="center"><%=ib.getAmount()%></td>
 											<td class="formcss" align="center"><%=ib.getDate()%></td>
@@ -130,13 +130,13 @@
 											<td  align="center"><a class="btn btn-link text-gradient px-3 mb-0"
 												href="viewincome?incomeId=<%=ib.getIncomeId()%>"><i class="bi bi-eye"></i> View</td>
 												
+												
 													<td>	<a
 											href="editincome?incomeId=<%=ib.getIncomeId()%>"><i class="bi bi-pencil"></i> Edit
 											</td>
 											  </a>
 											
-											 <td  align="center"><a class="btn btn-link text-danger text-gradient px-3 mb-0"
-												href="deleteincome/<%=ib.getIncomeId()%>"><i class="bi bi-trash text-danger"></i>Delete</td>
+											
 										</tr>
 										<%
 										}

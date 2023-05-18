@@ -122,7 +122,6 @@
 											<th class="formheadcss">Date</th>
 											<th class="formheadcss">View Detail</th>
 											<th class="formheadcss">Edit Detail</th>
-											<th class="formheadcss">Delete Detail</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -142,9 +141,7 @@
 											</td>
 											  </a>
 											
-											 <td  align="center"><a class="btn btn-link text-danger text-gradient px-3 mb-0"
-												href="deleteexpense/<%=eb.getExpenseId()%>"><i class="bi bi-trash text-danger"></i>Delete</td>
-										</tr>
+											
 										<%
 										}
 										%>

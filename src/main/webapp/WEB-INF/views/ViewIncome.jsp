@@ -77,11 +77,12 @@
 		%>
 	
 			<div class="row">
-							<div><%=incomeBean.getTitle()%></div><br>
+						<div><%=incomeBean.getTitle()%></div><br>
 							<div><%=incomeBean.getAccountTypeName()%></div><br>
 							<div><%=incomeBean.getAmount()%></div><br>
 							<div><%=incomeBean.getDate()%></div><br>
 							<div><%=incomeBean.getStatusName()%></div><br>
+							<div><%=incomeBean.getVendorName()%></div><br>
 							<div><%=incomeBean.getDescription()%></div>
 						</div>
 						

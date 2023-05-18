@@ -12,6 +12,7 @@ import com.bean.SubCategoryBean;
 
 @Repository
 public class SubCategoryDao {
+	
 	@Autowired
 	JdbcTemplate stmt;
 	
