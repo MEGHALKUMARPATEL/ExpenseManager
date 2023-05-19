@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@page import="com.bean.StatusBean"%>
 <%@page import="com.bean.AccountTypeBean"%>
 <%@page import="com.bean.VendorBean"%>
@@ -52,7 +53,7 @@
 						List<AccountTypeBean> accountTypeList = (List<AccountTypeBean>)request.getAttribute("accountTypeList");
 						List<StatusBean> statusList = (List<StatusBean>)request.getAttribute("statusList");
 						%>
-
+						<%ExpenseBean expenseBean = (ExpenseBean)request.getAttribute("expenseBean"); %>
 						<form action="updateexpense" method="post">
 							<input type="hidden" name="expenseId" value="<%=expense.getExpenseId() %>"/>
 						
@@ -60,7 +61,7 @@
 								<label for="inputText" class="col-sm-2 col-form-label">Title
 								</label>
 								<div class="col-sm-6">
-									<input type="text" name=""
+									<input type="text" name="title"
 										value="<%=expense.getTitle()%>"
 										class="form-control">
 								</div>
@@ -70,9 +71,14 @@
 								<label for="inputText" class="col-sm-2 col-form-label">Category
 								</label>
 								<div class="col-sm-6">
-									<input type="text" name="expenseName"
-										value="<%=expense.getCategoryName()%>"
-										class="form-control">
+									 <select name="categoryId" class="form-control form-control-lg">
+											 <option value="${expenseBean.categoryId}" >${expenseBean.categoryName}</option>
+											 <%System.out.println("catgory for edit"+expenseBean.getCategoryId()); %>
+												<% 
+													for(CategoryBean cb:categoryList){ %>
+														<option value=""><%=cb.getCategoryName() %></option>
+														<%} %>	
+													</select>
 								</div>
 							</div>
 							
@@ -80,9 +86,12 @@
 								<label for="inputText" class="col-sm-2 col-form-label">Subcategory
 								</label>
 								<div class="col-sm-6">
-									<input type="text" name="expenseName"
-										value="<%=expense.getSubcategoryName()%>"
-										class="form-control">
+									 <select name="subCategoryId" class="form-control form-control-lg">
+										 <option value="${expenseBean.subCategoryId }">${expenseBean.subcategoryName}</option>
+											<% for(SubCategoryBean sb:subCategoryList){ %>
+													<option value="<%=sb.getSubCategoryId()%>"><%=sb.getSubCategoryName() %></option>
+													<%} %>	
+													</select>
 								</div>
 							</div>
 							
@@ -90,9 +99,13 @@
 								<label for="inputText" class="col-sm-2 col-form-label">Vendor
 								</label>
 								<div class="col-sm-6">
-									<input type="text" name="expenseName"
-										value="<%=expense.getVendorName()%>"
-										class="form-control">
+									<select name="vendorId" class="form-control form-control-lg">
+											 <option value="${expenseBean.vendorId }">${expenseBean.vendorName }</option>
+												<% 
+													for(VendorBean vb:vendorList){ %>
+														<option value="<%=vb.getVendorId()%>"><%=vb.getVendorName() %></option>
+														<%} %>	
+													</select>
 								</div>
 							</div>
 							
@@ -100,9 +113,13 @@
 								<label for="inputText" class="col-sm-2 col-form-label">AccountType
 								</label>
 								<div class="col-sm-6">
-									<input type="text" name="expenseName"
-										value="<%=expense.getAccountTypeName()%>"
-										class="form-control">
+									<select name="accountTypeId" class="form-control form-control-lg">
+											 <option value="${expenseBean.accountTypeId }">${expenseBean.accountTypeName }</option>
+												<% 
+													for(AccountTypeBean ab:accountTypeList){ %>
+														<option value="<%=ab.getAccountTypeId()%>"><%=ab.getAccountTypeName() %></option>
+														<%} %>	
+													</select>
 								</div>
 							</div>
 							
@@ -110,9 +127,13 @@
 								<label for="inputText" class="col-sm-2 col-form-label">Status
 								</label>
 								<div class="col-sm-6">
-									<input type="text" name="expenseName"
-										value="<%=expense.getStatusName()%>"
-										class="form-control">
+									<select name="statusId" class="form-control form-control-lg">
+											 <option value="${expenseBean.statusId }">${expenseBean.statusName }</option>
+												<% 
+													for(StatusBean sb:statusList){ %>
+														<option value="<%=sb.getStatusId()%>"><%=sb.getStatusName() %></option>
+														<%} %>	
+													</select>
 								</div>
 							</div>
 							
@@ -120,17 +141,37 @@
 								<label for="inputText" class="col-sm-2 col-form-label">Amount
 								</label>
 								<div class="col-sm-6">
-									<input type="text" name="expenseName"
+									<input type="text" name="amount"
 										value="<%=expense.getAmount()%>"
 										class="form-control">
 								</div>
 							</div>
 							
+							<%
+											Calendar c = Calendar.getInstance(); 
+											int d = c.get(c.DAY_OF_MONTH); //07 
+											int m = c.get(c.MONTH)+1;//03
+											String mon = "";
+											String dt = "";
+											if(m<=9){
+												mon = 0+""+m; 
+											}else{
+												mon = m+"";
+											}
+											if(d <= 9){
+												dt = 0+""+d;
+											}else{
+												dt = d+"";
+											}
+											int y = c.get(c.YEAR);//2023 
+											System.out.println(y+"-"+m+"-"+d);
+										%>	
+							
 							<div class="row mb-3">
 								<label for="inputText" class="col-sm-2 col-form-label">Date
 								</label>
 								<div class="col-sm-6">
-									<input type="text" name="expenseName"
+									<input type="date" name="date"
 										value="<%=expense.getDate()%>"
 										class="form-control">
 								</div>
@@ -143,14 +184,6 @@
 								<div class="col-2">
 									<button class="btn btn-primary w-100" href="updateexpense" type="submit">Update
 									</button>
-									
-									
-									
-									
-									
-									
-									
-									
 									
 									
 									
